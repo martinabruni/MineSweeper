@@ -1,6 +1,6 @@
 import random
 
-from Entities.Cell import Cell
+from Cell import Cell
 
 
 class Board:
@@ -15,8 +15,6 @@ class Board:
 
     def initializeBoard(self):
         self.__placeBombs()
-        self.printBoard()
-        print("===================")
         self.__assignValues()
 
     def __placeBombs(self):

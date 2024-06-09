@@ -15,9 +15,14 @@ class Cell:
         pass
 
     def __revealCell(self):
+        """controllare se e' un -1 oppure no --> chiama GameOver()
+            controlallare se e' gia rivelato --> return
+        altrimenti --> chiamata al metodo __updateCellStyle, __updateCellText"""
         pass
 
     def __flagCell(self):
+        """controllare se e' gia flaggato --> return
+        __updateCellStyle"""
         pass
 
     def __updateCellStyle(self):

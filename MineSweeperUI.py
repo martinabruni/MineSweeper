@@ -4,7 +4,12 @@ class MineSweeperUI:
     def __init__(self):
         pass
 
+    # Elisa
     def createMenu(self):
+        pass
+    
+    # Elisa
+    def createMenuSettings(self):
         pass
 
     def createBoard(self):
