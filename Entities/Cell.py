@@ -1,24 +1,42 @@
 import tkinter as tk
-
+from tkinter import messagebox
 
 class Cell:
-    def __init__(self, x, y):
-        self.__button = None
+    def __init__(self, x: int, y: int, frame: tk.Frame):
         self.__value = 0
         self.__revealed = False
         self.__flagged = False
         self.__x = x
         self.__y = y
+        self.__frame = frame
+        self.__defineCellBehavior()
 
     def __defineCellBehavior(self):
-        """Qui dovra' essere implementata lo logica del bottone"""
-        pass
+        """Qui dovra' essere implementata lo logica del bottone
+        tasto destro --> on right click --> revealCell
+        tasto sinistro --> ... """
+        self.__button = tk.Button(self.__frame, text="", width=3, height=1, font=("Helvetica", 14, "bold"))
+        self.__button.grid(row=self.__x,column=self.__y)
+        self.__button.bind("<Button-1>", lambda e: self.__revealCell())
+        self.__button.bind("<Button-3>", lambda e: self.__flagCell())
 
     def __revealCell(self):
         """controllare se e' un -1 oppure no --> chiama GameOver()
             controlallare se e' gia rivelato --> return
         altrimenti --> chiamata al metodo __updateCellStyle, __updateCellText"""
-        pass
+        if self.__value == -1:
+            # self.__button = bomb_button
+            self.loseMessage()
+            self.__frame.destroy()
+        else:
+            self.printCell()
+            self.__revealed = True
+            self.__button.config(state="disabled", relief=tk.SUNKEN, bg="light grey")
+            self.__button.config(text=str(self.__value))
+
+    def loseMessage(self):
+        messagebox.showinfo("Game Over", "You Lost")
+        # video bomba che esplode
 
     def __flagCell(self):
         """controllare se e' gia flaggato --> return
@@ -37,12 +55,15 @@ class Cell:
     def __onRightClick(self):
         pass
 
+    def printCell(self):
+        print(f"""Bottone {self.__x, self.__y}: {self.__value}""")
+
     @property
-    def x(self):
+    def x(self) -> int:
         return self.__x
 
     @property
-    def y(self):
+    def y(self) -> int:
         return self.__y
 
     @property
@@ -84,3 +105,6 @@ class Cell:
     @y.setter
     def y(self, x: int):
         self.__y = x
+
+if __name__ == "__main__":
+    pass
