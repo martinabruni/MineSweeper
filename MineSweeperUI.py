@@ -19,13 +19,19 @@ class MineSweeperUI:
     def createBoard(self):
         pass
 
+    # Devid
     def resetGame(self):
+        # distruggere la board
+        # ricreare il menu
         pass
 
+
     def destroyMenu(self):
+        # distruggere il frame
         pass
 
     def destroyBoard(self):
+        # distrugge il frame
         pass
 
     def checkWin(self):
