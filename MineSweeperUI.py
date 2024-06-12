@@ -6,6 +6,8 @@ class MineSweeperUI:
 
     def __init__(self, root: tk.Tk):
         self.__root = root
+        self.__size = 10
+        self.__bombPercentage = 20
 
     # Elisa
     def createMenu(self):
@@ -15,9 +17,15 @@ class MineSweeperUI:
     def createMenuSettings(self):
         pass
 
-    # Daniela
     def createBoard(self):
-        pass
+        # creare un frame
+        self.__frame = tk.Frame(self.__root, bg="black", bd=10, relief="groove")
+        # impacchettare il frame
+        self.__frame.pack(fill="both", expand=True, padx=10, pady=10)
+        # creare un oggetto di una classe (scoprila)
+        self.__board = Board(self.__size, self.__bombPercentage, self.__frame)
+        # chiamare il metodo di quell'oggetto che crea la Board
+        self.__board.initializeBoard()
 
     # Devid
     def resetGame(self):
@@ -45,4 +53,7 @@ class MineSweeperUI:
 
 # Daniela
 if __name__ == "__main__":
-    pass
+    root = tk.Tk()
+    game_ui = MineSweeperUI(root)
+    game_ui.createBoard()
+    root.mainloop()
