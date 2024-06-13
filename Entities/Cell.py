@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
+from config import red_flag
 
 class Cell:
     def __init__(self, x: int, y: int, frame: tk.Frame):
@@ -15,10 +16,10 @@ class Cell:
         """Qui dovra' essere implementata lo logica del bottone
         tasto destro --> on right click --> revealCell
         tasto sinistro --> ... """
-        self.__button = tk.Button(self.__frame, text="", width=3, height=1, font=("Helvetica", 14, "bold"))
+        self.__button = tk.Button(self.__frame, text="", width=3, height=1, font=("Helvetica", 14, "bold"),relief=tk.RAISED)
         self.__button.grid(row=self.__x,column=self.__y)
-        self.__button.bind("<Button-1>", lambda e: self.__onLeftClick())
-        self.__button.bind("<Button-3>", lambda e: self.__onRightClick())
+        self.__button.bind("<Button-1>", lambda e:self.__onLeftClick())
+        self.__button.bind("<Button-3>", lambda e:self.__onRightClick())
 
     def __revealCell(self):
         """controllare se e' un -1 oppure no --> chiama GameOver()
@@ -32,20 +33,28 @@ class Cell:
         # video bomba che esplode
 
     def __flagCell(self):
-        """controllare se e' gia flaggato --> return
-        __updateCellStyle"""
-        pass
+        if self.__flagged == False:
+            self.__flagged = True
+            self.__button.config(text = red_flag, state="disabled")
+            
+        else:
+            self.__button.config(text="", state="normal")
+            self.__flagged = False
+            
+            
+       
 
     def __onLeftClick(self):
         if self.__value == -1:
             # self.__button = bomb_button
+            self.__revealCell()
             self.loseMessage()
             self.__frame.destroy()
         else:
             self.__revealCell()
 
     def __onRightClick(self):
-        pass
+        self.__flagCell()
 
     def printCell(self):
         print(f"""Bottone {self.__x, self.__y}: {self.__value}""")
