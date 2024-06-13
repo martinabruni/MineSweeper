@@ -1,17 +1,20 @@
 import tkinter as tk
 from Entities.Board import Board
+from config import *
 
 class MineSweeperUI:
     """Questa classe gestisce l'interfaccia utente"""
 
     def __init__(self, root: tk.Tk):
         self.__root = root
+        self.__frame = None
         self.__size = 5
         self.__bombPercentage = 20
 
     # Elisa
     def createMenu(self):
-        pass
+       Menu(self.__root,self.__frame)
+       
     
     # Elisa
     def createMenuSettings(self):
@@ -55,5 +58,6 @@ class MineSweeperUI:
 if __name__ == "__main__":
     root = tk.Tk()
     game_ui = MineSweeperUI(root)
-    game_ui.createBoard()
+    game_ui.createMenu()
+    # game_ui.createBoard()
     root.mainloop()
