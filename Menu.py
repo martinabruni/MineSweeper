@@ -13,7 +13,7 @@ class Menu:
    def __init__(self, frame,root):
        self.__frame= frame
        self.__root= root
-       
+
      
      
    @property

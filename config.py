@@ -8,4 +8,5 @@ N.B. per convenzione scriviamole COSI_PER_FAVORE"""
 button_width = 10
 button_height = 2
 image_path = "icona.png"
+image_settings= "settingsImage.jpg"
 
