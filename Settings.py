@@ -13,6 +13,7 @@ class Settings:
     def __init__(self,root,frame):
         self.__root=root
         self.__frame=frame
+        self.run_model()
         
     @property
     def root(self):
