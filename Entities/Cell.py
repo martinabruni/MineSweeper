@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
-from config import red_flag
+from config import redFlag
 
 class Cell:
     def __init__(self, x: int, y: int, frame: tk.Frame):
@@ -11,6 +11,7 @@ class Cell:
         self.__y = y
         self.__frame = frame
         self.__defineCellBehavior()
+     
 
     def __defineCellBehavior(self):
         """Qui dovra' essere implementata lo logica del bottone
@@ -35,7 +36,7 @@ class Cell:
     def __flagCell(self):
         if self.__flagged == False:
             self.__flagged = True
-            self.__button.config(text = red_flag, state="disabled")
+            self.__button.config(text = redFlag, state="disabled")
             
         else:
             self.__button.config(text="", state="normal")
@@ -45,13 +46,14 @@ class Cell:
        
 
     def __onLeftClick(self):
-        if self.__value == -1:
-            # self.__button = bomb_button
-            self.__revealCell()
-            self.loseMessage()
-            self.__frame.destroy()
-        else:
-            self.__revealCell()
+        if self.__flagged==False:
+            if self.__value == -1:
+                # self.__button = bomb_button
+                self.__revealCell()
+                self.loseMessage()
+                self.__frame.destroy()
+            else:
+                self.__revealCell()
 
     def __onRightClick(self):
         self.__flagCell()

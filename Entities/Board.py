@@ -22,6 +22,7 @@ class Board:
         self.__assignValues()
 
     def __placeBombs(self):
+        
         placedBombs = 0
         while placedBombs < self.__bombs:
             x, y = random.randint(0, self.__size - 1), random.randint(0, self.__size - 1)

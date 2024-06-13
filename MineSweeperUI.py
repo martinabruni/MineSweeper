@@ -6,6 +6,7 @@ class MineSweeperUI:
 
     def __init__(self, root: tk.Tk):
         self.__root = root
+        self.__root.title("\U0001F6A9 Mine Sweeper \U0001F4A3")
         self.__size = 5
         self.__bombPercentage = 20
 
@@ -18,7 +19,8 @@ class MineSweeperUI:
         pass
 
     def createBoard(self):
-        # creare un frame
+        # creare un frame\
+        
         self.__frame = tk.Frame(self.__root, bg="black", bd=10, relief="groove")
         # impacchettare il frame
         self.__frame.pack(fill="both", expand=True, padx=10, pady=10)
