@@ -4,9 +4,11 @@ che devono essere ripetute negli altri moduli)
 
 N.B. per convenzione scriviamole COSI_PER_FAVORE"""
 # STILE_BOTTONE_FLAGGATO = ...
+from MineSweeperUI import MineSweeperUI
+from Menu import Menu
 
 button_width = 10
 button_height = 2
-image_path = "icona.png"
+image_path = ".\icona.png"
 image_settings= "settingsImage.jpg"
 
