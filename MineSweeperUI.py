@@ -1,35 +1,45 @@
 import tkinter as tk
 from Entities.Board import Board
-import menuLib as mL
 
 class MineSweeperUI:
     """Questa classe gestisce l'interfaccia utente"""
 
     def __init__(self, root: tk.Tk):
         self.__root = root
-        self.__frame = None
+        self.__size = 5
+        self.__bombPercentage = 20
 
     # Elisa
     def createMenu(self):
-        mL.set_root(self.__root)
-        mL.set_Frame(self.__root, self.__frame)
-        mL.fill_Frame(self.__frame)
+        pass
     
     # Elisa
     def createMenuSettings(self):
         pass
 
-    # Daniela
     def createBoard(self):
+        # creare un frame
+        self.__frame = tk.Frame(self.__root, bg="black", bd=10, relief="groove")
+        # impacchettare il frame
+        self.__frame.pack(fill="both", expand=True, padx=10, pady=10)
+        # creare un oggetto di una classe (scoprila)
+        self.__board = Board(self.__size, self.__bombPercentage, self.__frame)
+        # chiamare il metodo di quell'oggetto che crea la Board
+        self.__board.initializeBoard()
+
+    # Devid
+    def resetGame(self):
+        # distruggere la board
+        # ricreare il menu
         pass
 
-    def resetGame(self):
-        pass
 
     def destroyMenu(self):
+        # distruggere il frame
         pass
 
     def destroyBoard(self):
+        # distrugge il frame
         pass
 
     def checkWin(self):
@@ -44,5 +54,6 @@ class MineSweeperUI:
 # Daniela
 if __name__ == "__main__":
     root = tk.Tk()
-    MineSweeperUI(root).createMenu()
+    game_ui = MineSweeperUI(root)
+    game_ui.createBoard()
     root.mainloop()

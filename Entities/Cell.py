@@ -17,22 +17,15 @@ class Cell:
         tasto sinistro --> ... """
         self.__button = tk.Button(self.__frame, text="", width=3, height=1, font=("Helvetica", 14, "bold"))
         self.__button.grid(row=self.__x,column=self.__y)
-        self.__button.bind("<Button-1>", lambda e: self.__revealCell())
-        self.__button.bind("<Button-3>", lambda e: self.__flagCell())
+        self.__button.bind("<Button-1>", lambda e: self.__onLeftClick())
+        self.__button.bind("<Button-3>", lambda e: self.__onRightClick())
 
     def __revealCell(self):
         """controllare se e' un -1 oppure no --> chiama GameOver()
             controlallare se e' gia rivelato --> return
         altrimenti --> chiamata al metodo __updateCellStyle, __updateCellText"""
-        if self.__value == -1:
-            # self.__button = bomb_button
-            self.loseMessage()
-            self.__frame.destroy()
-        else:
-            self.printCell()
-            self.__revealed = True
-            self.__button.config(state="disabled", relief=tk.SUNKEN, bg="light grey")
-            self.__button.config(text=str(self.__value))
+        self.__revealed = True
+        self.__button.config(state="disabled", relief=tk.SUNKEN, bg="light grey",text=str(self.__value))
 
     def loseMessage(self):
         messagebox.showinfo("Game Over", "You Lost")
@@ -43,14 +36,13 @@ class Cell:
         __updateCellStyle"""
         pass
 
-    def __updateCellStyle(self):
-        pass
-
-    def __updateCellText(self):
-        pass
-
     def __onLeftClick(self):
-        pass
+        if self.__value == -1:
+            # self.__button = bomb_button
+            self.loseMessage()
+            self.__frame.destroy()
+        else:
+            self.__revealCell()
 
     def __onRightClick(self):
         pass
