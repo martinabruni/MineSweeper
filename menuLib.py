@@ -4,7 +4,7 @@ from tkinter import PhotoImage
 import cv2
 # import Settings
 from PIL import Image, ImageTk
-from config import*
+from config import *
 
 
         
