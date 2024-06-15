@@ -1,5 +1,6 @@
 import tkinter as tk
 from Utils import globals
+from Utils.lib import *
 
 
 class GameController:
@@ -20,8 +21,9 @@ class GameController:
         pass
 
     def createBoard(self):
+        self.__root.geometry("")
         self.__frame = tk.Frame(self.__root, bg="black", bd=10, relief="groove")
-        self.__frame.pack(fill="both", expand=True, padx=10, pady=10)
+        self.__frame.place(relx=0.5, rely=0.5, anchor='center')
         self.__board = globals.Board(self.__size, self.__bombPercentage, self.__frame)
         self.__board.initializeBoard()
 

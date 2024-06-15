@@ -5,7 +5,7 @@ import pygame
 from PIL import Image, ImageTk
 
 from Utils import globals
-from Utils.menuLib import createButton
+from Utils.lib import *
 
 
 class Menu:
@@ -35,7 +35,7 @@ class Menu:
 
     def __setRoot(self):
         self.__root.title("Campo Minato")
-        self.__root.geometry("1500x800")
+        setRootFullScreen(self.__root)
         self.__root.configure(bg="black")
 
     def __setFrame(self):
