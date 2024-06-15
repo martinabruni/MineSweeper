@@ -8,7 +8,7 @@ Task da fare:
 - Reset game in caso di vincita o di perdita
 
 
-comandi per utilizza git:
+Comandi per utilizzare git:
 1) Clonare la repository, in modo da creare una copia locale dei file di github
     ```commandline
     git clone https://github.com/martinabruni/MineSweeper.git
