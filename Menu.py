@@ -6,6 +6,13 @@ import cv2
 from PIL import Image, ImageTk
 from config import*
 from Settings import Settings
+import pygame
+
+image_path = "icona.png"
+gifBomba="gifb.gif"
+gifBandiera="giff.gif"
+musica="retrovideogame.mp3"
+volume_level=0.1
 
 class Menu:
    
@@ -14,9 +21,11 @@ class Menu:
        self.__root= root
        self.__buttonStar=None
        self.__buttonSettings=None
+       self.__image=None
        self.set_root()
        self.set_Frame()
        self.fill_Frame()
+       self.start_music()
    
    @property
    def started(self):
@@ -29,6 +38,9 @@ class Menu:
    @property
    def frame(self):
        return self.__frame
+   @property
+   def image(self):
+       return self.__image
 
    def set_root(self):
         self.__root.title("Campo Minato")
@@ -37,7 +49,7 @@ class Menu:
         
    
    def set_Frame(self):
-        self.__frame = tk.Frame(self.__root, bg="black", bd=5, relief="groove")
+        self.__frame = tk.Frame(self.__root, bg="black", bd=10, relief="groove")
         self.__frame.pack(fill="both", expand=True, padx=10, pady=10)
    
    def open_second_module(self):
@@ -55,21 +67,34 @@ class Menu:
         image = cv2.imread(image_path)
         image = cv2.resize(image, (150, 150))  
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-        photo = ImageTk.PhotoImage(image=Image.fromarray(image))
-        return photo
+        self.__image = ImageTk.PhotoImage(image=Image.fromarray(image))
+        return self.__image
+   
+    
+   
    
 
    def fill_Frame(self):
         
-        # image = self.set_image()
-        # image_label = tk.Label(self.__frame, image=image, bg="black")
-        # image_label.place(relx=0.5, rely=0.2, anchor='center')
-
+        image = self.set_image()
+        image_label = tk.Label(self.__frame, image=image, bg="black")
+        image_label.place(relx=0.5, rely=0.2, anchor='center')
+    
+    #MOSECA
+   def start_music(self):
+        pygame.mixer.init()  # Inizializza il mixer audio di pygame
+        pygame.mixer.music.load(musica)  # Carica il file musicale
+        pygame.mixer.music.set_volume(volume_level)
+        pygame.mixer.music.play(-1)  # Riproduci la musica in loop (-1 significa loop infinito)
+    
     #TITOLO
     
         custom_font = tkFont.Font(family="Terminal", size=75)
         label = tk.Label(self.__frame, text=" CAMPO MINATO",font=custom_font,fg="white", bg="black")
         label.place(relx=0.5, rely=0.4, anchor='center')
+        
+        
+        
 
     #BUTTON
 
