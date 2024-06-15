@@ -9,6 +9,6 @@ from Menu import Menu
 
 button_width = 10
 button_height = 2
-image_path = ".\icona.png"
+image_path = "icona.png"
 image_settings= "settingsImage.jpg"
 
