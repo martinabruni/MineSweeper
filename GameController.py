@@ -1,8 +1,8 @@
 import tkinter as tk
-import globals
+from Utils import globals
 
 
-class MineSweeperUI:
+class GameController:
     """Questa classe gestisce l'interfaccia utente"""
 
     def __init__(self, root: tk.Tk):
@@ -52,6 +52,6 @@ class MineSweeperUI:
 # Daniela
 if __name__ == "__main__":
     root = tk.Tk()
-    game_ui = MineSweeperUI(root)
+    game_ui = GameController(root)
     game_ui.createMenu()
     root.mainloop()

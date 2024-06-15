@@ -3,8 +3,8 @@ import tkinter.font as tkFont
 import cv2
 # import Settings
 from PIL import Image, ImageTk
-import menuLib as mL
-from globals import *
+from Utils import menuLib as mL
+from Utils.globals import *
 
 
 class Settings:

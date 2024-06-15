@@ -4,8 +4,8 @@ import cv2
 import pygame
 from PIL import Image, ImageTk
 
-import globals
-from menuLib import createButton
+from Utils import globals
+from Utils.menuLib import createButton
 
 
 class Menu:
@@ -50,7 +50,7 @@ class Menu:
     def __openGame(self):
         self.__buttonStart.config(bg="white", fg="gray")
         self.__frame.destroy()
-        globals.MineSweeperUI(self.__root).createBoard()
+        globals.GameController(self.__root).createBoard()
 
     # IMMAGINE
     def __setImage(self):

@@ -1,5 +1,5 @@
 import tkinter as tk
-import globals
+import Utils.globals as globals
 
 def createButton(frame, text, command):
     return tk.Button(frame, text=text,
