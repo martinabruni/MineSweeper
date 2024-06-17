@@ -4,8 +4,6 @@ from Utils.lib import *
 
 
 class GameController:
-    """Questa classe gestisce l'interfaccia utente"""
-
     def __init__(self, root: tk.Tk):
         self.__root = root
         self.__frame = None
