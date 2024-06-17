@@ -6,7 +6,7 @@ import pygame
 from PIL import Image, ImageTk
 
 from Utils import globals
-from Utils.lib import *
+from Utils import lib
 
 
 class Menu:
@@ -36,7 +36,7 @@ class Menu:
 
     def __setRoot(self):
         self.__root.title("Campo Minato")
-        setRootFullScreen(self.__root)
+        lib.setRootFullScreen(self.__root)
         self.__root.configure(bg="black")
 
     def __setFrame(self):
@@ -72,9 +72,9 @@ class Menu:
         label.place(relx=0.5, rely=0.4, anchor='center')
 
         # BUTTON
-        self.__buttonStart = createButton(self.__frame, "Start", self.__openGame)
+        self.__buttonStart = lib.createButton(self.__frame, "Start", self.__openGame)
         self.__buttonStart.place(relx=0.5, rely=0.6, anchor='center')
-        self.__buttonSettings = createButton(self.__frame, "Settings", self.__openSettings)
+        self.__buttonSettings = lib.createButton(self.__frame, "Settings", self.__openSettings)
         self.__buttonSettings.place(relx=0.5, rely=0.7, anchor='center')
 
     # MOSECA

@@ -1,5 +1,5 @@
 from Utils.lib import *
-
+from Utils import globals
 
 class GameController:
     def __init__(self, root: tk.Tk):
