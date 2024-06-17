@@ -1,5 +1,3 @@
-import tkinter as tk
-from Utils import globals
 from Utils.lib import *
 
 

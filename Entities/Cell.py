@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import messagebox
+
 from Utils import globals
+
 
 class Cell:
     def __init__(self, x: int, y: int, frame: tk.Frame):
@@ -13,10 +15,11 @@ class Cell:
         self.__defineCellBehavior()
 
     def __defineCellBehavior(self):
-        self.__button = tk.Button(self.__frame, text="", width=3, height=1, font=("Helvetica", 14, "bold"),relief=tk.RAISED)
-        self.__button.grid(row=self.__x,column=self.__y)
-        self.__button.bind("<Button-1>", lambda e:self.__onLeftClick())
-        self.__button.bind("<Button-3>", lambda e:self.__onRightClick())
+        self.__button = tk.Button(self.__frame, text="", width=3, height=1, font=("Helvetica", 14, "bold"),
+                                  relief=tk.RAISED)
+        self.__button.grid(row=self.__x, column=self.__y)
+        self.__button.bind("<Button-1>", lambda e: self.__onLeftClick())
+        self.__button.bind("<Button-3>", lambda e: self.__onRightClick())
 
     def __revealCell(self):
         self.__revealed = True
@@ -29,14 +32,11 @@ class Cell:
     def __flagCell(self):
         if self.__flagged == False:
             self.__flagged = True
-            self.__button.config(text = globals.redFlag, state="disabled")
+            self.__button.config(text=globals.redFlag, state="disabled")
 
         else:
             self.__button.config(text="", state="normal")
             self.__flagged = False
-
-
-
 
     def __onLeftClick(self):
         if self.__flagged:
@@ -101,6 +101,7 @@ class Cell:
     @y.setter
     def y(self, x: int):
         self.__y = x
+
 
 if __name__ == "__main__":
     pass

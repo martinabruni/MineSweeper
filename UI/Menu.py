@@ -1,5 +1,6 @@
 import tkinter as tk
 import tkinter.font as tkFont
+
 import cv2
 import pygame
 from PIL import Image, ImageTk
@@ -82,6 +83,3 @@ class Menu:
         pygame.mixer.music.load(globals.music)  # Carica il file musicale
         pygame.mixer.music.set_volume(globals.volumeLevel)
         pygame.mixer.music.play(-1)  # Riproduci la music in loop (-1 significa loop infinito)
-
-
-

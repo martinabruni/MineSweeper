@@ -1,5 +1,6 @@
 import random
 import tkinter as tk
+
 from Entities.Cell import Cell
 
 
@@ -13,6 +14,7 @@ class Board:
     @property
     def board(self):
         return self.__board
+
     @property
     def size(self):
         return self.__size
