@@ -13,6 +13,7 @@ class Cell:
         self.__y = y
         self.__frame = frame
         self.__defineCellBehavior()
+        self.__adjacentCell = []
 
     def __defineCellBehavior(self):
         self.__button = tk.Button(self.__frame, text="", width=3, height=1, font=("Helvetica", 14, "bold"),
@@ -24,6 +25,12 @@ class Cell:
     def __revealCell(self):
         self.__revealed = True
         self.__button.config(state="disabled", relief=tk.SUNKEN, bg="light grey", text=str(self.__value))
+
+    def __revealAdjacentCell(self):
+        self.__revealCell()
+        for cell in self.__adjacentCell:
+            cell.__onLeftClick()
+
 
     def loseMessage(self):
         messagebox.showinfo("Game Over", "You Lost")
@@ -39,12 +46,14 @@ class Cell:
             self.__flagged = False
 
     def __onLeftClick(self):
-        if self.__flagged:
+        if self.__flagged or self.__revealed:
             return
         elif self.__value == -1:
             # self.__button = bomb_button
             self.loseMessage()
             self.__frame.destroy()
+        elif self.__value == 0:
+            self.__revealAdjacentCell()
         else:
             self.__revealCell()
 
@@ -57,6 +66,10 @@ class Cell:
     @property
     def x(self) -> int:
         return self.__x
+
+    @property
+    def adjacentCell(self):
+        return self.__adjacentCell
 
     @property
     def y(self) -> int:

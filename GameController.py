@@ -5,7 +5,7 @@ class GameController:
     def __init__(self, root: tk.Tk):
         self.__root = root
         self.__frame = None
-        self.__size = 5
+        self.__size = 15
         self.__bombPercentage = 20
 
     # Elisa

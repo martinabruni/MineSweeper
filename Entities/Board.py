@@ -22,6 +22,7 @@ class Board:
     def initializeBoard(self):
         self.__placeBombs()
         self.__assignValues()
+        self.printBoard()
 
     def __placeBombs(self):
         placedBombs = 0
@@ -37,6 +38,7 @@ class Board:
                 if cell.value == -1:
                     continue
                 cell.value = self.__countAdiacentBombs(cell)
+                self.__addAdjacentCell(cell)
 
     def __countAdiacentBombs(self, cell: Cell):
         adiacentBombs = 0
@@ -48,6 +50,16 @@ class Board:
                     if self.__board[i][j].value == -1:
                         adiacentBombs += 1
         return adiacentBombs
+
+    def __addAdjacentCell(self, cell:Cell):
+        if cell.value == 0:
+            for i in range(max(cell.x - 1, 0), min(cell.x + 2, self.__size)):
+                for j in range(max(cell.y - 1, 0), min(cell.y + 2, self.__size)):
+                    if cell.x == i and cell.y == j:
+                        continue
+                    else:
+                        cell.adjacentCell.append(self.__board[i][j])
+
 
     def printBoard(self):
         for i in range(self.__size):
