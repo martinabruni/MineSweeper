@@ -24,7 +24,12 @@ class Cell:
 
     def __revealCell(self):
         self.__revealed = True
-        self.__button.config(state="disabled", relief=tk.SUNKEN, bg="light grey", text=str(self.__value))
+        if self.__value == -1:
+            self.__button.config(state="disabled", relief=tk.SUNKEN, bg="light grey", text=str(globals.bomb))
+        elif self.__value == 0:
+            self.__button.config(state="disabled", relief=tk.SUNKEN, bg="light grey", text="")
+        else:
+            self.__button.config(state="disabled", relief=tk.SUNKEN, bg="light grey", text=str(self.__value))
 
     def __revealAdjacentCell(self):
         self.__revealCell()
@@ -50,9 +55,11 @@ class Cell:
             return
         elif self.__value == -1:
             # self.__button = bomb_button
+            self.__revealCell()
             self.loseMessage()
             self.__frame.destroy()
         elif self.__value == 0:
+
             self.__revealAdjacentCell()
         else:
             self.__revealCell()
