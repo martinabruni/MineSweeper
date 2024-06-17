@@ -1,32 +1,31 @@
 import tkinter as tk
-from Entities.Board import Board
+from Utils import globals
+from Utils.lib import *
 
-class MineSweeperUI:
+
+class GameController:
     """Questa classe gestisce l'interfaccia utente"""
 
     def __init__(self, root: tk.Tk):
         self.__root = root
-        self.__root.title("\U0001F6A9 Mine Sweeper \U0001F4A3")
+        self.__root.title(f"{globals.redFlag} Mine Sweeper {globals.bomb}")
+        self.__frame = None
         self.__size = 5
         self.__bombPercentage = 20
 
     # Elisa
     def createMenu(self):
-        pass
-    
+        globals.Menu(self.__root, self.__frame)
+
     # Elisa
     def createMenuSettings(self):
         pass
 
     def createBoard(self):
-        # creare un frame\
-        
+        self.__root.geometry("")
         self.__frame = tk.Frame(self.__root, bg="black", bd=10, relief="groove")
-        # impacchettare il frame
-        self.__frame.pack(fill="both", expand=True, padx=10, pady=10)
-        # creare un oggetto di una classe (scoprila)
-        self.__board = Board(self.__size, self.__bombPercentage, self.__frame)
-        # chiamare il metodo di quell'oggetto che crea la Board
+        self.__frame.place(relx=0.5, rely=0.5, anchor='center')
+        self.__board = globals.Board(self.__size, self.__bombPercentage, self.__frame)
         self.__board.initializeBoard()
 
     # Devid
@@ -56,6 +55,6 @@ class MineSweeperUI:
 # Daniela
 if __name__ == "__main__":
     root = tk.Tk()
-    game_ui = MineSweeperUI(root)
-    game_ui.createBoard()
+    game_ui = GameController(root)
+    game_ui.createMenu()
     root.mainloop()

@@ -4,7 +4,7 @@ from Entities.Cell import Cell
 
 
 class Board:
-    def __init__(self, size: int, bombPercentage: int, frame: tk.Frame, ):
+    def __init__(self, size: int, bombPercentage: int, frame: tk.Frame):
         self.__board = [[Cell(x, y, frame) for y in range(size)] for x in range(size)]
         self.__size = size
         self.__bombs = int(size * size * (bombPercentage / 100))

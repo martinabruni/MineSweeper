@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
-from config import redFlag
+from Utils import globals
 
 class Cell:
     def __init__(self, x: int, y: int, frame: tk.Frame):
@@ -11,23 +11,16 @@ class Cell:
         self.__y = y
         self.__frame = frame
         self.__defineCellBehavior()
-     
 
     def __defineCellBehavior(self):
-        """Qui dovra' essere implementata lo logica del bottone
-        tasto destro --> on right click --> revealCell
-        tasto sinistro --> ... """
         self.__button = tk.Button(self.__frame, text="", width=3, height=1, font=("Helvetica", 14, "bold"),relief=tk.RAISED)
         self.__button.grid(row=self.__x,column=self.__y)
         self.__button.bind("<Button-1>", lambda e:self.__onLeftClick())
         self.__button.bind("<Button-3>", lambda e:self.__onRightClick())
 
     def __revealCell(self):
-        """controllare se e' un -1 oppure no --> chiama GameOver()
-            controlallare se e' gia rivelato --> return
-        altrimenti --> chiamata al metodo __updateCellStyle, __updateCellText"""
         self.__revealed = True
-        self.__button.config(state="disabled", relief=tk.SUNKEN, bg="light grey",text=str(self.__value))
+        self.__button.config(state="disabled", relief=tk.SUNKEN, bg="light grey", text=str(self.__value))
 
     def loseMessage(self):
         messagebox.showinfo("Game Over", "You Lost")
@@ -37,23 +30,23 @@ class Cell:
         if self.__flagged == False:
             self.__flagged = True
             self.__button.config(text = redFlag, state="disabled")
-            
+
         else:
             self.__button.config(text="", state="normal")
             self.__flagged = False
-            
-            
-       
+
+
+
 
     def __onLeftClick(self):
-        if self.__flagged==False:
-            if self.__value == -1:
-                # self.__button = bomb_button
-                self.__revealCell()
-                self.loseMessage()
-                self.__frame.destroy()
-            else:
-                self.__revealCell()
+        if self.__flagged:
+            return
+        elif self.__value == -1:
+            # self.__button = bomb_button
+            self.loseMessage()
+            self.__frame.destroy()
+        else:
+            self.__revealCell()
 
     def __onRightClick(self):
         self.__flagCell()
