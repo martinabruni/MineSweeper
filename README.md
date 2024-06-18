@@ -2,8 +2,14 @@
 ITS 2024 - Progetto d'esame Python
 
 Task da fare:
-- Il menu delle settings
-- Reset game in caso di vincita o di perdita
+- Il menu delle settings (daniela ed elisa)
+- modifica lose e win windows (francesco)
+- pulsanti quit, menu e restart (francesco)
+- aggiungere nome utente
+- leaderboard (con file)
+- statistiche partite
+- regolazione volume musica
+- regolazione finestra
 - ripulire il codice
 
 
