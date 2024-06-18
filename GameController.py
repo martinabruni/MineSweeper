@@ -23,8 +23,7 @@ class GameController:
 
     # Devid
     def resetGame(self):
-        # distruggere la board
-        # ricreare il menu
+
         pass
 
     def destroyMenu(self):

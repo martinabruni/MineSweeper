@@ -22,7 +22,7 @@ class Cell:
         self.__button.bind("<Button-1>", lambda e: self.__onLeftClick())
         self.__button.bind("<Button-3>", lambda e: self.__onRightClick())
 
-    def __revealCell(self):
+    def revealCell(self):
         self.__revealed = True
         if self.__value == -1:
             self.__button.config(state="disabled", relief=tk.SUNKEN, bg="light grey", text=str(g.bomb))
@@ -35,12 +35,12 @@ class Cell:
             self.win()
 
     def __revealAdjacentCell(self):
-        self.__revealCell()
+        self.revealCell()
         for cell in self.__adjacentCell:
             cell.__onLeftClick()
 
     def lose(self):
-        self.__revealCell()
+        g.boardGlobal.revealBombs()
         messagebox.showinfo("Game Over", "You Lost")
         self.__frame.destroy()
         # video bomba che esplode
@@ -66,7 +66,7 @@ class Cell:
         elif self.__value == 0:
             self.__revealAdjacentCell()
         else:
-            self.__revealCell()
+            self.revealCell()
 
     def __onRightClick(self):
         self.__flagCell()

@@ -2,6 +2,7 @@ import random
 import tkinter as tk
 
 from Entities.Cell import Cell
+from Utils import globals as g
 
 
 class Board:
@@ -9,6 +10,7 @@ class Board:
         self.__board = [[Cell(x, y, frame) for y in range(size)] for x in range(size)]
         self.__size = size
         self.__bombs = int(size * size * (bombPercentage / 100))
+        self.__bombsList = []
         self.__frame = frame
 
     @property
@@ -18,6 +20,10 @@ class Board:
     @property
     def size(self):
         return self.__size
+
+    @property
+    def bombsList(self):
+        return self.__bombsList
 
     def initializeBoard(self):
         self.__placeBombs()
@@ -29,7 +35,9 @@ class Board:
         while placedBombs < self.__bombs:
             x, y = random.randint(0, self.__size - 1), random.randint(0, self.__size - 1)
             if self.__board[x][y].value != -1:
-                self.__board[x][y].value = -1
+                newBomb = self.__board[x][y]
+                newBomb.value = -1
+                self.__bombsList.append(newBomb)
                 placedBombs += 1
 
     def __assignValues(self):
@@ -51,7 +59,7 @@ class Board:
                         adiacentBombs += 1
         return adiacentBombs
 
-    def __addAdjacentCell(self, cell:Cell):
+    def __addAdjacentCell(self, cell: Cell):
         if cell.value == 0:
             for i in range(max(cell.x - 1, 0), min(cell.x + 2, self.__size)):
                 for j in range(max(cell.y - 1, 0), min(cell.y + 2, self.__size)):
@@ -60,6 +68,9 @@ class Board:
                     else:
                         cell.adjacentCell.append(self.__board[i][j])
 
+    def revealBombs(self):
+        for bomb in self.__bombsList:
+            bomb.revealCell()
 
     def printBoard(self):
         for i in range(self.__size):
