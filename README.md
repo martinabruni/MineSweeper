@@ -3,9 +3,8 @@ ITS 2024 - Progetto d'esame Python
 
 Task da fare:
 - Il menu delle settings
-- Rivelare le celle nulle adiacenti alla cella cliccata (se non e' una bomba)
-- Controllare la vincita
 - Reset game in caso di vincita o di perdita
+- ripulire il codice
 
 
 Comandi per utilizzare git:

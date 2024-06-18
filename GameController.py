@@ -1,6 +1,7 @@
 from Utils.lib import *
 from Utils import globals as g
 
+
 class GameController:
     def __init__(self):
         pass
@@ -27,7 +28,6 @@ class GameController:
 
     def destroyMenu(self):
         pass
-
 
     def destroyBoard(self):
         # distrugge il frame
