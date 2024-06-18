@@ -30,7 +30,8 @@ class Cell:
             self.__button.config(state="disabled", relief=tk.SUNKEN, bg="light grey", text="")
         else:
             self.__button.config(state="disabled", relief=tk.SUNKEN, bg="light grey", text=str(self.__value))
-        g.revealedCellsGlobal += 1
+        if self.__value != -1:
+            g.revealedCellsGlobal += 1
         if g.gameController.checkWin():
             self.win()
 
