@@ -6,7 +6,7 @@ class GameController:
         self.__root = root
         self.__frame = frame
         self.__size = g.boardSizeGlobal
-        self.__bombPercentage = g.bombsPercentage
+        self.__bombsPercentage = g.bombsPercentageGlobal
 
     # Elisa
     def createMenu(self):
@@ -18,7 +18,7 @@ class GameController:
 
     def createBoard(self):
         setCoreGameUI()
-        g.boardGlobal = g.Board(self.__size, self.__bombPercentage, self.__frame)
+        g.boardGlobal = g.Board(self.__size, self.__bombsPercentage, self.__frame)
         g.boardGlobal.initializeBoard()
 
     # Devid
@@ -36,7 +36,10 @@ class GameController:
         pass
 
     def checkWin(self):
-        pass
+        if g.revealedCellsGlobal == g.winCondition:
+            return True
+        else:
+            return False
 
     def checkLose(self):
         pass

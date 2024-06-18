@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 
-from Utils import globals
+from Utils import globals as g
 
 
 class Cell:
@@ -25,11 +25,15 @@ class Cell:
     def __revealCell(self):
         self.__revealed = True
         if self.__value == -1:
-            self.__button.config(state="disabled", relief=tk.SUNKEN, bg="light grey", text=str(globals.bomb))
+            self.__button.config(state="disabled", relief=tk.SUNKEN, bg="light grey", text=str(g.bomb))
         elif self.__value == 0:
             self.__button.config(state="disabled", relief=tk.SUNKEN, bg="light grey", text="")
         else:
             self.__button.config(state="disabled", relief=tk.SUNKEN, bg="light grey", text=str(self.__value))
+        g.revealedCellsGlobal += 1
+        if g.gameController.checkWin():
+            self.winMessage()
+
 
     def __revealAdjacentCell(self):
         self.__revealCell()
@@ -39,12 +43,16 @@ class Cell:
 
     def loseMessage(self):
         messagebox.showinfo("Game Over", "You Lost")
+        self.__frame.destroy()
         # video bomba che esplode
 
+    def winMessage(self):
+        messagebox.showinfo("Congratulations", "You Win")
+        self.__frame.destroy()
     def __flagCell(self):
         if self.__flagged == False:
             self.__flagged = True
-            self.__button.config(text=globals.redFlag, state="disabled")
+            self.__button.config(text=g.redFlag, state="disabled")
 
         else:
             self.__button.config(text="", state="normal")
@@ -57,7 +65,6 @@ class Cell:
             # self.__button = bomb_button
             self.__revealCell()
             self.loseMessage()
-            self.__frame.destroy()
         elif self.__value == 0:
 
             self.__revealAdjacentCell()

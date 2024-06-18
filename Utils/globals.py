@@ -17,11 +17,13 @@ music = "Assets/retrovideogame.mp3"
 volumeLevel = 0.1
 
 # Game logic variables
-boardSizeGlobal = 15
-bombsPercentage = 20
-revealedCells = 0
+boardSizeGlobal = 5
+bombsPercentageGlobal = 20
+revealedCellsGlobal = 0
+winCondition = int(boardSizeGlobal ** 2 * (100 - bombsPercentageGlobal) / 100)
 
 # UI objects
+
 rootGlobal = tk.Tk()
 frameGlobal = tk.Frame(rootGlobal)
 gameController = GameController(rootGlobal, frameGlobal)
