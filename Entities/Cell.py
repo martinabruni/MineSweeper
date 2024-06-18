@@ -1,6 +1,9 @@
 import tkinter as tk
 from tkinter import messagebox
 
+from Utils import globals
+
+
 class Cell:
     def __init__(self, x: int, y: int, frame: tk.Frame):
         self.__value = 0
@@ -10,42 +13,59 @@ class Cell:
         self.__y = y
         self.__frame = frame
         self.__defineCellBehavior()
+        self.__adjacentCell = []
 
     def __defineCellBehavior(self):
-        """Qui dovra' essere implementata lo logica del bottone
-        tasto destro --> on right click --> revealCell
-        tasto sinistro --> ... """
-        self.__button = tk.Button(self.__frame, text="", width=3, height=1, font=("Helvetica", 14, "bold"))
-        self.__button.grid(row=self.__x,column=self.__y)
+        self.__button = tk.Button(self.__frame, text="", width=3, height=1, font=("Helvetica", 14, "bold"),
+                                  relief=tk.RAISED)
+        self.__button.grid(row=self.__x, column=self.__y)
         self.__button.bind("<Button-1>", lambda e: self.__onLeftClick())
         self.__button.bind("<Button-3>", lambda e: self.__onRightClick())
 
     def __revealCell(self):
-        """controllare se e' un -1 oppure no --> chiama GameOver()
-            controlallare se e' gia rivelato --> return
-        altrimenti --> chiamata al metodo __updateCellStyle, __updateCellText"""
         self.__revealed = True
-        self.__button.config(state="disabled", relief=tk.SUNKEN, bg="light grey",text=str(self.__value))
+        if self.__value == -1:
+            self.__button.config(state="disabled", relief=tk.SUNKEN, bg="light grey", text=str(globals.bomb))
+        elif self.__value == 0:
+            self.__button.config(state="disabled", relief=tk.SUNKEN, bg="light grey", text="")
+        else:
+            self.__button.config(state="disabled", relief=tk.SUNKEN, bg="light grey", text=str(self.__value))
+
+    def __revealAdjacentCell(self):
+        self.__revealCell()
+        for cell in self.__adjacentCell:
+            cell.__onLeftClick()
+
 
     def loseMessage(self):
         messagebox.showinfo("Game Over", "You Lost")
         # video bomba che esplode
 
     def __flagCell(self):
-        """controllare se e' gia flaggato --> return
-        __updateCellStyle"""
-        pass
+        if self.__flagged == False:
+            self.__flagged = True
+            self.__button.config(text=globals.redFlag, state="disabled")
+
+        else:
+            self.__button.config(text="", state="normal")
+            self.__flagged = False
 
     def __onLeftClick(self):
-        if self.__value == -1:
+        if self.__flagged or self.__revealed:
+            return
+        elif self.__value == -1:
             # self.__button = bomb_button
+            self.__revealCell()
             self.loseMessage()
             self.__frame.destroy()
+        elif self.__value == 0:
+
+            self.__revealAdjacentCell()
         else:
             self.__revealCell()
 
     def __onRightClick(self):
-        pass
+        self.__flagCell()
 
     def printCell(self):
         print(f"""Bottone {self.__x, self.__y}: {self.__value}""")
@@ -53,6 +73,10 @@ class Cell:
     @property
     def x(self) -> int:
         return self.__x
+
+    @property
+    def adjacentCell(self):
+        return self.__adjacentCell
 
     @property
     def y(self) -> int:
@@ -97,6 +121,7 @@ class Cell:
     @y.setter
     def y(self, x: int):
         self.__y = x
+
 
 if __name__ == "__main__":
     pass
