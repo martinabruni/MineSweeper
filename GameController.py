@@ -24,11 +24,15 @@ class GameController:
         g.boardGlobal.initializeBoard()
 
     # Devid
-    def resetGame(self):
-        # distruggere la board
+    def backToMenu(self):
         self.destroyBoard()
-        # ricreare il menu
         self.createMenu()
+        g.escapeRoot.destroy()
+
+    def restartGame(self):
+        self.destroyBoard()
+        self.createBoard()
+        g.escapeRoot.destroy()
 
     def destroyMenu(self):
         pass

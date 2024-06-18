@@ -24,7 +24,7 @@ revealedCellsGlobal = 0
 winCondition = int(boardSizeGlobal ** 2 * (100 - bombsPercentageGlobal) / 100)
 
 # UI objects
-
+escapeRoot = None
 rootGlobal = tk.Tk()
 frameGlobal = tk.Frame(rootGlobal)
 gameController = GameController()
