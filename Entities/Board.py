@@ -26,6 +26,7 @@ class Board:
         return self.__bombsList
 
     def initializeBoard(self):
+        g.revealedCellsGlobal = 0
         self.__placeBombs()
         self.__assignValues()
         self.printBoard()
