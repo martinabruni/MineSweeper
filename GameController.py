@@ -16,7 +16,8 @@ class GameController:
 
     def quitGame(self):
         g.frameGlobal.destroy()
-        g.rootGlobal.quit()
+        g.rootGlobal.destroy()
+        g.escapeRoot.destroy()
 
     def createBoard(self):
         setCoreGameUI()
@@ -24,11 +25,15 @@ class GameController:
         g.boardGlobal.initializeBoard()
 
     # Devid
-    def resetGame(self):
-        # distruggere la board
+    def backToMenu(self):
         self.destroyBoard()
-        # ricreare il menu
         self.createMenu()
+        g.escapeRoot.destroy()
+
+    def restartGame(self):
+        self.destroyBoard()
+        self.createBoard()
+        g.escapeRoot.destroy()
 
     def destroyMenu(self):
         pass

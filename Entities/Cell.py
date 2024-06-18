@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
-
+from Utils import lib as l
 from Utils import globals as g
 
 
@@ -43,13 +43,11 @@ class Cell:
 
     def lose(self):
         g.boardGlobal.revealBombs()
-        messagebox.showinfo("Game Over", "You Lost")
-        g.gameController.resetGame()
+        l.createEscapeRoot("Hai Perso :(")
         # video bomba che esplode
 
     def win(self):
-        messagebox.showinfo("Congratulations", "You Win")
-        g.gameController.resetGame()
+        l.createEscapeRoot("Hai Vinto :)")
 
     def __flagCell(self):
         if self.__flagged == False:
