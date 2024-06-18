@@ -26,12 +26,13 @@ class Cell:
         self.__revealed = True
         if self.__value == -1:
             self.__button.config(state="disabled", relief=tk.SUNKEN, bg="light grey", text=str(g.bomb))
+            return
         elif self.__value == 0:
             self.__button.config(state="disabled", relief=tk.SUNKEN, bg="light grey", text="")
         else:
             self.__button.config(state="disabled", relief=tk.SUNKEN, bg="light grey", text=str(self.__value))
-        if self.__value != -1:
-            g.revealedCellsGlobal += 1
+
+        g.revealedCellsGlobal += 1
         if g.gameController.checkWin():
             self.win()
 
