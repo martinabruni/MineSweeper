@@ -6,7 +6,6 @@ def setCoreGameUI():
     globals.rootGlobal.geometry("")
     globals.frameGlobal.config(bg="black", bd=10, relief="groove")
     globals.frameGlobal.place(relx=0.5, rely=0.5, anchor='center')
-    return globals.Board(globals.boardSizeGlobal, globals.bombsPercentageGlobal, globals.frameGlobal)
 
 def createButton(frame, text, command):
     return tk.Button(frame, text=text,

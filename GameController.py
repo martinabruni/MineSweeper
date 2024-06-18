@@ -18,7 +18,7 @@ class GameController:
 
     def createBoard(self):
         setCoreGameUI()
-        g.boardGlobal = g.Board(self.__size, self.__bombsPercentage, self.__frame)
+        g.boardGlobal = g.Board(self.__frame)
         g.boardGlobal.initializeBoard()
 
     # Devid
