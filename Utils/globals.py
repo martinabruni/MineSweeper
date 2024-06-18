@@ -15,6 +15,7 @@ gifBomba = "gifb.gif"
 gifBandiera = "giff.gif"
 music = "Assets/retrovideogame.mp3"
 volumeLevel = 0.1
+isFullScreen = False
 
 # Game logic variables
 boardSizeGlobal = 5

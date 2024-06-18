@@ -8,11 +8,15 @@ class GameController:
 
     # Elisa
     def createMenu(self):
-        globals.menuGlobal.initializeMenu()
+        g.menuGlobal.initializeMenu()
 
     # Elisa
     def createMenuSettings(self):
         pass
+
+    def quitGame(self):
+        g.frameGlobal.destroy()
+        g.rootGlobal.quit()
 
     def createBoard(self):
         setCoreGameUI()
