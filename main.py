@@ -1,7 +1,5 @@
-import tkinter as tk
+import Utils.globals as g
 
 if __name__ == "__main__":
-    root = tk.Tk()
-    # 
-    root.mainloop()
-    pass
+    g.gameController.createMenu()
+    g.rootGlobal.mainloop()

@@ -17,10 +17,6 @@ class Menu:
         self.__buttonStar = None
         self.__buttonSettings = None
         self.__image = None
-        self.__setRoot()
-        self.__setFrame()
-        self.__fillFrame()
-        self.__startMusic()
 
     @property
     def root(self):
@@ -33,6 +29,12 @@ class Menu:
     @property
     def image(self):
         return self.__image
+
+    def initializeMenu(self):
+        self.__setRoot()
+        self.__setFrame()
+        self.__fillFrame()
+        self.__startMusic()
 
     def __setRoot(self):
         self.__root.title("Campo Minato")
@@ -51,7 +53,7 @@ class Menu:
     def __openGame(self):
         self.__buttonStart.config(bg="white", fg="gray")
         self.__frame.destroy()
-        globals.GameController(self.__root).createBoard()
+        globals.gameController.createBoard()
 
     # IMMAGINE
     def __setImage(self):
