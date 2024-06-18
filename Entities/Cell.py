@@ -42,12 +42,12 @@ class Cell:
     def lose(self):
         g.boardGlobal.revealBombs()
         messagebox.showinfo("Game Over", "You Lost")
-        self.__frame.destroy()
+        g.gameController.resetGame()
         # video bomba che esplode
 
     def win(self):
         messagebox.showinfo("Congratulations", "You Win")
-        self.__frame.destroy()
+        g.gameController.resetGame()
 
     def __flagCell(self):
         if self.__flagged == False:

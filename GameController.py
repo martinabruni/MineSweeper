@@ -2,11 +2,8 @@ from Utils.lib import *
 from Utils import globals as g
 
 class GameController:
-    def __init__(self, root: tk.Tk, frame: tk.Frame):
-        self.__root = root
-        self.__frame = frame
-        self.__size = g.boardSizeGlobal
-        self.__bombsPercentage = g.bombsPercentageGlobal
+    def __init__(self):
+        pass
 
     # Elisa
     def createMenu(self):
@@ -18,23 +15,23 @@ class GameController:
 
     def createBoard(self):
         setCoreGameUI()
-        g.boardGlobal = g.Board(self.__frame)
+        g.boardGlobal = g.Board(g.frameGlobal)
         g.boardGlobal.initializeBoard()
 
     # Devid
     def resetGame(self):
         # distruggere la board
-        self.__destroyBoard()
+        self.destroyBoard()
         # ricreare il menu
-        self.__createBoard()
+        self.createMenu()
 
     def destroyMenu(self):
-        # distruggere il frame
-        self.__menuBoard.destroy()
+        pass
+
 
     def destroyBoard(self):
         # distrugge il frame
-        self.__frame.destroy()
+        g.frameGlobal.destroy()
 
     def checkWin(self) -> bool:
         if g.revealedCellsGlobal == g.winCondition:

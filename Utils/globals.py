@@ -26,7 +26,7 @@ winCondition = int(boardSizeGlobal ** 2 * (100 - bombsPercentageGlobal) / 100)
 
 rootGlobal = tk.Tk()
 frameGlobal = tk.Frame(rootGlobal)
-gameController = GameController(rootGlobal, frameGlobal)
+gameController = GameController()
 menuGlobal = Menu(rootGlobal, frameGlobal)
 # settingsGlobal = Settings(rootGlobal, frameGlobal)
 
