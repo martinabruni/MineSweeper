@@ -77,6 +77,7 @@ class Board:
             for j in range(self.__size):
                 print(f"{str(self.__board[i][j].value)}", end=" ")
             print()
+        print("*************")
 
     def printAllCells(self):
         for row in self.__board:
