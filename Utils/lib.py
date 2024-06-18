@@ -1,6 +1,6 @@
 import tkinter as tk
 
-import Utils.globals as g
+import Utils.generic as g
 
 
 def setCoreGameUI():
@@ -37,6 +37,7 @@ def setRootFullScreen(root: tk.Tk):
     root.bind("<Escape>", lambda e: endFullScreen(root))
     g.isFullScreen = True
 
+
 def createEscapeRoot(title):
     g.escapeRoot = tk.Tk()
     g.escapeRoot.withdraw()
@@ -57,6 +58,7 @@ def createEscapeRoot(title):
     button_close.pack(side=tk.LEFT, padx=10, pady=10)
 
     dialog.mainloop()
+
 
 if __name__ == "__name__":
     root = tk.Tk()

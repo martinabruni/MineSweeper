@@ -4,65 +4,53 @@ import tkinter.font as tkFont
 import cv2
 import pygame
 from PIL import Image, ImageTk
-
-from Utils import generic
+from Utils.Frame import Frame
 from Utils import lib
+from Utils import generic
 
 
-class Menu:
-
-    def __init__(self, root, frame):
-        self.__frame = frame
-        self.__root = root
-        self.__buttonStar = None
+class Menu(Frame):
+    def __init__(self, sizeTitle, textTitle, imagePath):
+        Frame.__init__(self, sizeTitle, textTitle, imagePath)
+        self.__buttonStart = None
         self.__buttonSettings = None
-        self.__image = None
-
-    @property
-    def root(self):
-        return self.__root
-
-    @property
-    def frame(self):
-        return self.__frame
-
     @property
     def image(self):
         return self.__image
 
     def initializeMenu(self):
         self.__setRoot()
-        self.__setFrame()
-        self.__fillFrame()
+        Frame.initializeMenu(self)
+        self.__buttonSettings = lib.createButton(generic.frameGlobal, "Settings", self.__openSettings)
+        self.__buttonStart = lib.createButton(generic.frameGlobal, "Start", self.__openGame)
+        self.__buttonSettings.place(relx=0.5, rely=0.7, anchor='center')
+        self.__buttonStart.place(relx=0.5, rely=0.6, anchor='center')
         self.__startMusic()
 
     def __setRoot(self):
-        self.__root.title("Campo Minato")
-        lib.setRootFullScreen(self.__root)
-        self.__root.configure(bg="black")
+        generic.rootGlobal.title("Campo Minato")
+        lib.setRootFullScreen(generic.rootGlobal)
+        generic.rootGlobal.configure(bg="black")
 
-   
     def __openSettings(self):
         self.__buttonSettings.config(bg="white", fg="gray")
-        self.__frame.destroy()
-        generic.Settings.run_module(self.__root)
+        generic.frameGlobal.destroy()
+        generic.Settings.run_module(generic.rootGlobal)
 
     def __openGame(self):
         self.__buttonStart.config(bg="white", fg="gray")
-        self.__frame.destroy()
+        generic.frameGlobal.destroy()
         generic.gameController.createBoard()
 
-    # IMMAGINE
-    
+        # IMMAGINE
 
         # TITOLO
-       
 
         # BUTTON
-        self.__buttonStart = lib.createButton(self.__frame, "Start", self.__openGame)
-        self.__buttonStart.place(relx=0.5, rely=0.6, anchor='center')
-        self.__buttonSettings = lib.createButton(self.__frame, "Settings", self.__openSettings)
-        self.__buttonSettings.place(relx=0.5, rely=0.7, anchor='center')
+        # self.__buttonStart = lib.createButton(self.__frame, "Start", self.__openGame)
+        # self.__buttonStart.place(relx=0.5, rely=0.6, anchor='center')
+        # self.__buttonSettings = lib.createButton(self.__frame, "Settings", self.__openSettings)
+        # self.__buttonSettings.place(relx=0.5, rely=0.7, anchor='center')
 
     # MOSECA
     def __startMusic(self):

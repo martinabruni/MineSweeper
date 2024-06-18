@@ -1,5 +1,5 @@
 from Utils.lib import *
-from Utils import globals as g
+from Utils import generic as g
 
 
 class GameController:

@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 from Utils import lib as l
-from Utils import globals as g
+from Utils import generic as g
 
 
 class Cell:

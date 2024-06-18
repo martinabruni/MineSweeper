@@ -4,7 +4,7 @@ import cv2
 # import Settings
 from PIL import Image, ImageTk
 from Utils import lib as mL
-from Utils.globals import *
+from Utils.generic import *
 
 
 class Settings:
