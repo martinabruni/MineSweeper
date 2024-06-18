@@ -1,27 +1,25 @@
 from Utils.lib import *
-from Utils import globals
+from Utils import globals as g
 
 class GameController:
-    def __init__(self, root: tk.Tk):
+    def __init__(self, root: tk.Tk, frame: tk.Frame):
         self.__root = root
-        self.__frame = None
-        self.__size = 15
-        self.__bombPercentage = 20
+        self.__frame = frame
+        self.__size = g.boardSizeGlobal
+        self.__bombsPercentage = g.bombsPercentageGlobal
 
     # Elisa
     def createMenu(self):
-        globals.Menu(self.__root, self.__frame)
+        globals.menuGlobal.initializeMenu()
 
     # Elisa
     def createMenuSettings(self):
         pass
 
     def createBoard(self):
-        self.__root.geometry("")
-        self.__frame = tk.Frame(self.__root, bg="black", bd=10, relief="groove")
-        self.__frame.place(relx=0.5, rely=0.5, anchor='center')
-        self.__board = globals.Board(self.__size, self.__bombPercentage, self.__frame)
-        self.__board.initializeBoard()
+        setCoreGameUI()
+        g.boardGlobal = g.Board(self.__frame)
+        g.boardGlobal.initializeBoard()
 
     # Devid
     def resetGame(self):
@@ -29,23 +27,26 @@ class GameController:
         self.__destroyBoard()
         # ricreare il menu
         self.__createBoard()
-        pass
 
     def destroyMenu(self):
         # distruggere il frame
-        self.__menuBoard.destroy() 
-        pass
+        self.__menuBoard.destroy()
 
     def destroyBoard(self):
         # distrugge il frame
         self.__frame.destroy()
-        pass
 
-    def checkWin(self):
-        pass
+    def checkWin(self) -> bool:
+        if g.revealedCellsGlobal == g.winCondition:
+            return True
+        else:
+            return False
 
-    def checkLose(self):
-        pass
+    def checkLose(self, cellValue: int) -> bool:
+        if cellValue == -1:
+            return True
+        else:
+            return False
 
     def updateUI(self):
         pass
@@ -53,7 +54,4 @@ class GameController:
 
 # Daniela
 if __name__ == "__main__":
-    root = tk.Tk()
-    game_ui = GameController(root)
-    game_ui.createMenu()
-    root.mainloop()
+    pass

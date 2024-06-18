@@ -2,6 +2,10 @@ import tkinter as tk
 
 import Utils.globals as globals
 
+def setCoreGameUI():
+    globals.rootGlobal.geometry("")
+    globals.frameGlobal.config(bg="black", bd=10, relief="groove")
+    globals.frameGlobal.place(relx=0.5, rely=0.5, anchor='center')
 
 def createButton(frame, text, command):
     return tk.Button(frame, text=text,

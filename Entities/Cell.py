@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 
-from Utils import globals
+from Utils import globals as g
 
 
 class Cell:
@@ -22,29 +22,37 @@ class Cell:
         self.__button.bind("<Button-1>", lambda e: self.__onLeftClick())
         self.__button.bind("<Button-3>", lambda e: self.__onRightClick())
 
-    def __revealCell(self):
+    def revealCell(self):
         self.__revealed = True
         if self.__value == -1:
-            self.__button.config(state="disabled", relief=tk.SUNKEN, bg="light grey", text=str(globals.bomb))
+            self.__button.config(state="disabled", relief=tk.SUNKEN, bg="light grey", text=str(g.bomb))
         elif self.__value == 0:
             self.__button.config(state="disabled", relief=tk.SUNKEN, bg="light grey", text="")
         else:
             self.__button.config(state="disabled", relief=tk.SUNKEN, bg="light grey", text=str(self.__value))
+        g.revealedCellsGlobal += 1
+        if g.gameController.checkWin():
+            self.win()
 
     def __revealAdjacentCell(self):
-        self.__revealCell()
+        self.revealCell()
         for cell in self.__adjacentCell:
             cell.__onLeftClick()
 
-
-    def loseMessage(self):
+    def lose(self):
+        g.boardGlobal.revealBombs()
         messagebox.showinfo("Game Over", "You Lost")
+        self.__frame.destroy()
         # video bomba che esplode
+
+    def win(self):
+        messagebox.showinfo("Congratulations", "You Win")
+        self.__frame.destroy()
 
     def __flagCell(self):
         if self.__flagged == False:
             self.__flagged = True
-            self.__button.config(text=globals.redFlag, state="disabled")
+            self.__button.config(text=g.redFlag, state="disabled")
 
         else:
             self.__button.config(text="", state="normal")
@@ -53,16 +61,12 @@ class Cell:
     def __onLeftClick(self):
         if self.__flagged or self.__revealed:
             return
-        elif self.__value == -1:
-            # self.__button = bomb_button
-            self.__revealCell()
-            self.loseMessage()
-            self.__frame.destroy()
+        elif g.gameController.checkLose(self.__value):
+            self.lose()
         elif self.__value == 0:
-
             self.__revealAdjacentCell()
         else:
-            self.__revealCell()
+            self.revealCell()
 
     def __onRightClick(self):
         self.__flagCell()
