@@ -43,11 +43,11 @@ class Cell:
 
     def lose(self):
         g.boardGlobal.revealBombs()
-        l.createEscapeRoot()
+        l.createEscapeRoot("Hai Perso :(")
         # video bomba che esplode
 
     def win(self):
-        l.createEscapeRoot()
+        l.createEscapeRoot("Hai Vinto :)")
 
     def __flagCell(self):
         if self.__flagged == False:

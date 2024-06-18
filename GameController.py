@@ -16,7 +16,8 @@ class GameController:
 
     def quitGame(self):
         g.frameGlobal.destroy()
-        g.rootGlobal.quit()
+        g.rootGlobal.destroy()
+        g.escapeRoot.destroy()
 
     def createBoard(self):
         setCoreGameUI()

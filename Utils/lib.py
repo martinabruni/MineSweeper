@@ -37,14 +37,14 @@ def setRootFullScreen(root: tk.Tk):
     root.bind("<Escape>", lambda e: endFullScreen(root))
     g.isFullScreen = True
 
-def createEscapeRoot():
+def createEscapeRoot(title):
     g.escapeRoot = tk.Tk()
     g.escapeRoot.withdraw()
 
     dialog = tk.Toplevel(g.escapeRoot)
     dialog.title("Scegli un'opzione")
 
-    label = tk.Label(dialog, text="Cosa vuoi fare?")
+    label = tk.Label(dialog, text=title)
     label.pack(pady=10)
 
     button_continue = tk.Button(dialog, text="Restart", command=g.gameController.restartGame)
@@ -53,7 +53,7 @@ def createEscapeRoot():
     button_exit = tk.Button(dialog, text="Menu", command=g.gameController.backToMenu)
     button_exit.pack(side=tk.RIGHT, padx=10, pady=10)
 
-    button_close = tk.Button(dialog, text="Quit", command=g.gameController.quit)
+    button_close = tk.Button(dialog, text="Quit", command=g.gameController.quitGame)
     button_close.pack(side=tk.LEFT, padx=10, pady=10)
 
     dialog.mainloop()
