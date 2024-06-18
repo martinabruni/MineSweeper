@@ -35,14 +35,17 @@ class GameController:
         # distrugge il frame
         pass
 
-    def checkWin(self):
+    def checkWin(self) -> bool:
         if g.revealedCellsGlobal == g.winCondition:
             return True
         else:
             return False
 
-    def checkLose(self):
-        pass
+    def checkLose(self, cellValue: int) -> bool:
+        if cellValue == -1:
+            return True
+        else:
+            return False
 
     def updateUI(self):
         pass

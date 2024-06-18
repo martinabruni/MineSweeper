@@ -32,23 +32,23 @@ class Cell:
             self.__button.config(state="disabled", relief=tk.SUNKEN, bg="light grey", text=str(self.__value))
         g.revealedCellsGlobal += 1
         if g.gameController.checkWin():
-            self.winMessage()
-
+            self.win()
 
     def __revealAdjacentCell(self):
         self.__revealCell()
         for cell in self.__adjacentCell:
             cell.__onLeftClick()
 
-
-    def loseMessage(self):
+    def lose(self):
+        self.__revealCell()
         messagebox.showinfo("Game Over", "You Lost")
         self.__frame.destroy()
         # video bomba che esplode
 
-    def winMessage(self):
+    def win(self):
         messagebox.showinfo("Congratulations", "You Win")
         self.__frame.destroy()
+
     def __flagCell(self):
         if self.__flagged == False:
             self.__flagged = True
@@ -61,12 +61,9 @@ class Cell:
     def __onLeftClick(self):
         if self.__flagged or self.__revealed:
             return
-        elif self.__value == -1:
-            # self.__button = bomb_button
-            self.__revealCell()
-            self.loseMessage()
+        elif g.gameController.checkLose(self.__value):
+            self.lose()
         elif self.__value == 0:
-
             self.__revealAdjacentCell()
         else:
             self.__revealCell()
