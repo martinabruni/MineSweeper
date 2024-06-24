@@ -28,7 +28,7 @@ escapeRoot = None
 rootGlobal = tk.Tk()
 frameGlobal = tk.Frame(rootGlobal)
 gameController = GameController()
-menuGlobal = Menu(75, "Campo Minato", imagePath)
+menuGlobal = Menu(75, "CAMPO MINATO", imagePath)
 # settingsGlobal = Settings(rootGlobal, frameGlobal)
 
 # Core gameplay objects

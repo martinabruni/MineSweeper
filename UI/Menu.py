@@ -42,16 +42,6 @@ class Menu(Frame):
         generic.frameGlobal.destroy()
         generic.gameController.createBoard()
 
-        # IMMAGINE
-
-        # TITOLO
-
-        # BUTTON
-        # self.__buttonStart = lib.createButton(self.__frame, "Start", self.__openGame)
-        # self.__buttonStart.place(relx=0.5, rely=0.6, anchor='center')
-        # self.__buttonSettings = lib.createButton(self.__frame, "Settings", self.__openSettings)
-        # self.__buttonSettings.place(relx=0.5, rely=0.7, anchor='center')
-
     # MOSECA
     def __startMusic(self):
         pygame.mixer.init()  # Inizializza il mixer audio di pygame
