@@ -2,7 +2,7 @@ import random
 import tkinter as tk
 
 from Entities.Cell import Cell
-from Utils import globals as g
+from Utils import generic as g
 
 
 class Board:
