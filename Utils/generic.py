@@ -16,6 +16,8 @@ gifBandiera = "giff.gif"
 music = "Assets/retrovideogame.mp3"
 volumeLevel = 0.1
 isFullScreen = False
+sizeTitle = 75
+textTitle = "CAMPO MINATO"
 
 # Game logic variables
 boardSizeGlobal = 5
@@ -28,7 +30,7 @@ escapeRoot = None
 rootGlobal = tk.Tk()
 frameGlobal = tk.Frame(rootGlobal)
 gameController = GameController()
-menuGlobal = Menu(75, "CAMPO MINATO", imagePath)
+menuGlobal = None
 # settingsGlobal = Settings(rootGlobal, frameGlobal)
 
 # Core gameplay objects

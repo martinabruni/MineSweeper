@@ -4,14 +4,14 @@ import tkinter.font as tkFont
 import cv2
 import pygame
 from PIL import Image, ImageTk
-from Utils.Frame import Frame
+from Utils.CustomFrame import CustomFrame
 from Utils import lib
 from Utils import generic
 
 
-class Menu(Frame):
+class Menu(CustomFrame):
     def __init__(self, sizeTitle, textTitle, imagePath):
-        Frame.__init__(self, sizeTitle, textTitle, imagePath)
+        CustomFrame.__init__(self, sizeTitle, textTitle, imagePath)
         self.__buttonStart = None
         self.__buttonSettings = None
     @property
@@ -19,18 +19,13 @@ class Menu(Frame):
         return self.__image
 
     def initializeMenu(self):
-        self.__setRoot()
-        Frame.initializeMenu(self)
+        CustomFrame.initializeMenu(self)
         self.__buttonSettings = lib.createButton(generic.frameGlobal, "Settings", self.__openSettings)
         self.__buttonStart = lib.createButton(generic.frameGlobal, "Start", self.__openGame)
         self.__buttonSettings.place(relx=0.5, rely=0.7, anchor='center')
         self.__buttonStart.place(relx=0.5, rely=0.6, anchor='center')
         self.__startMusic()
 
-    def __setRoot(self):
-        generic.rootGlobal.title("Campo Minato")
-        lib.setRootFullScreen(generic.rootGlobal)
-        generic.rootGlobal.configure(bg="black")
 
     def __openSettings(self):
         self.__buttonSettings.config(bg="white", fg="gray")

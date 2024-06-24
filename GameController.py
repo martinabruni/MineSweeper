@@ -8,6 +8,7 @@ class GameController:
 
     # Elisa
     def createMenu(self):
+        g.menuGlobal = g.Menu(g.sizeTitle, g.textTitle, g.imagePath)
         g.menuGlobal.initializeMenu()
 
     # Elisa
@@ -26,21 +27,14 @@ class GameController:
 
     # Devid
     def backToMenu(self):
-        self.destroyBoard()
-        self.createMenu()
+        g.frameGlobal.destroy()
         g.escapeRoot.destroy()
+        self.createMenu()
 
     def restartGame(self):
-        self.destroyBoard()
-        self.createBoard()
-        g.escapeRoot.destroy()
-
-    def destroyMenu(self):
-        pass
-
-    def destroyBoard(self):
-        # distrugge il frame
         g.frameGlobal.destroy()
+        g.escapeRoot.destroy()
+        self.createBoard()
 
     def checkWin(self) -> bool:
         if g.revealedCellsGlobal == g.winCondition:

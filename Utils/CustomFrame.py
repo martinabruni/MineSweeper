@@ -3,8 +3,10 @@ import tkinter.font as tkFont
 import cv2
 
 from PIL import Image, ImageTk
-from Utils import generic
-class Frame:
+from Utils import generic, lib
+
+
+class CustomFrame:
 
     def __init__(self, sizeTitle, textTitle, imagePath):
         self.__sizeTitle = sizeTitle
@@ -13,20 +15,26 @@ class Frame:
 
 
     def initializeMenu(self):
-        self.setFrame()
-        self.setTitle()
-        self.setImage()
+        self.__setRoot()
+        self.__setFrame()
+        self.__setTitle()
+        self.__setImage()
 
-    def setFrame(self):
+    def __setRoot(self):
+        generic.rootGlobal.title(self.__textTitle)
+        lib.setRootFullScreen(generic.rootGlobal)
+        generic.rootGlobal.configure(bg="black")
+
+    def __setFrame(self):
         generic.frameGlobal = tk.Frame(generic.rootGlobal, bg="black", bd=5, relief="groove")
         generic.frameGlobal.pack(fill="both", expand=True, padx=10, pady=10)
 
-    def setTitle(self):
+    def __setTitle(self):
         customFont = tkFont.Font(family="Terminal", size=self.__sizeTitle)
         label = tk.Label(generic.frameGlobal, text=self.__textTitle, font=customFont, fg="white", bg="black")
         label.place(relx=0.5, rely=0.4, anchor='center')
 
-    def setImage(self):
+    def __setImage(self):
         image = cv2.imread(self.__image)
         image = cv2.resize(image, (150, 150))
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
@@ -34,10 +42,3 @@ class Frame:
         imageLabel = tk.Label(generic.frameGlobal, image=self.__image, bg="black")
         imageLabel.place(relx=0.5, rely=0.2, anchor='center')
 
-
-if __name__ == "__main__":
-    root = tk.Tk()
-    # setRootFullScreen(root)
-    frame_instance = Frame(root, 20, "Titolo del Gioco", "Assets/icona.png")
-    frame_instance.initializeMenu()
-    root.mainloop()
