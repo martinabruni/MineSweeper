@@ -30,7 +30,7 @@ class Menu(CustomFrame):
     def __openSettings(self):
         self.__buttonSettings.config(bg="white", fg="gray")
         generic.frameGlobal.destroy()
-        generic.Settings.run_module(generic.rootGlobal)
+        generic.gameController.createMenuSettings()
 
     def __openGame(self):
         self.__buttonStart.config(bg="white", fg="gray")
