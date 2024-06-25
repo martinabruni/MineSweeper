@@ -25,6 +25,7 @@ class GameController:
 
     def createBoard(self):
         setCoreGameUI()
+        setWinCondition()
         g.boardGlobal = g.Board(g.frameGlobal)
         g.boardGlobal.initializeBoard()
 

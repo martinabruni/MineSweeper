@@ -23,7 +23,7 @@ textTitle = "CAMPO MINATO"
 boardSizeGlobal = 5
 bombsPercentageGlobal = 20
 revealedCellsGlobal = 0
-winCondition = int(boardSizeGlobal ** 2 * (100 - bombsPercentageGlobal) / 100)
+winCondition = 0
 
 # UI objects
 escapeRoot = None
