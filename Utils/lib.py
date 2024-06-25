@@ -14,11 +14,11 @@ def setCoreGameUI():
     g.frameGlobal.place(relx=0.5, rely=0.5, anchor='center')
 
 
-def createButton(frame, text, command, textColor = "white", bgColor="grey"):
+def createButton(frame, text, command, fg ="white", bg="grey"):
     return tk.Button(frame, text=text,
                      width=g.buttonWidth,
                      height=g.buttonHeight,
-                     bg=bgColor, fg=textColor,
+                     bg=bg, fg=fg,
                      command=command)
 
 
