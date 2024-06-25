@@ -1,51 +1,42 @@
 import tkinter as tk
 import tkinter.font as tkFont
+
 import cv2
-# import Settings
+import pygame
 from PIL import Image, ImageTk
-from Utils import lib as mL
-from Utils.generic import *
+from Utils.CustomFrame import CustomFrame
+from Utils import lib
+from Utils import generic
 
 
-class Settings:
-    def __init__(self, root, frame):
-        self.__root = root
-        self.__frame = frame
-        self.run_model()
+class Settings(CustomFrame):
+    def __init__(self, sizeTitle, textTitle, imagePath):
+        CustomFrame.__init__(self, sizeTitle, textTitle, imagePath)
+        self.__buttonEasy = None
+        self.__buttonMedium = None
+        self.__buttonHard = None
+        self.__saveButton = None
+            
+    def initializeMenu(self):
+        CustomFrame.initializeMenu(self)
+        self.__buttonEasy = lib.createButton(generic.frameGlobal, "Easy", self.__setEasyLevel, fg="green")
+        self.__buttonMedium = lib.createButton(generic.frameGlobal, "Medium", self.__setMediumLevel, fg="orange")
+        self.__buttonHard = lib.createButton(generic.frameGlobal, "Hard", self.__setHardLevel, fg="red")
+        self.__buttonEasy.place(relx=0.5, rely=0.6, anchor='center')
+        self.__buttonMedium.place(relx=0.5, rely=0.7, anchor='center')
+        self.__buttonHard.place(relx=0.5, rely=0.8, anchor='center')
+            
+    def __setHardLevel(self):
+        generic.boardSizeGlobal = 15
+        generic.bombsPercentageGlobal = 16
+        generic.gameController.createMenu()
 
-    @property
-    def root(self):
-        return self.__root
+    def __setMediumLevel(self):
+        generic.boardSizeGlobal = 10
+        generic.bombsPercentageGlobal = 16
+        generic.gameController.createMenu()
 
-    @property
-    def frame(self):
-        return self.__frame
-
-    def run_model(self, root):
-        def set_image():
-            image = cv2.imread(imageSettings)
-            image = cv2.resize(image, (150, 150))
-            image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-            photo = ImageTk.PhotoImage(image=Image.fromarray(image))
-
-            return photo
-
-        mL.set_Frame(root, frame)
-
-        def fill_Frame(self):
-            image = set_image()
-            # IMMMAGINE
-            image_label = tk.Label(self.__frame, image=image, bg="black")
-            image_label.place(relx=0.5, rely=0.2, anchor='center')
-
-            # TITOLO
-
-            custom_font = tkFont.Font(family="Terminal", size=25)
-
-            label = tk.Label(self.__frame, text=" SETTINGS", font=custom_font, fg="white", bg="black")
-            label.place(relx=0.5, rely=0.4, anchor='center')
-
-            # BUTTON
-
-            buttonSave = mL.createButton(self.__frame, "Save", open_second_module(self.__frame, buttonSave))
-            buttonSave.place(relx=0.5, rely=0.7, anchor='center')
+    def __setEasyLevel(self):
+        generic.boardSizeGlobal = 5
+        generic.bombsPercentageGlobal = 20
+        generic.gameController.createMenu()

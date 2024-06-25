@@ -31,7 +31,7 @@ rootGlobal = tk.Tk()
 frameGlobal = tk.Frame(rootGlobal)
 gameController = GameController()
 menuGlobal = None
-# settingsGlobal = Settings(rootGlobal, frameGlobal)
+settingsGlobal = None
 
 # Core gameplay objects
 boardGlobal = None
