@@ -1,7 +1,11 @@
+import math
 import tkinter as tk
 
 import Utils.generic as g
 
+
+def setWinCondition():
+    g.winCondition = math.ceil(g.boardSizeGlobal ** 2 * (100 - g.bombsPercentageGlobal) / 100)
 
 def setCoreGameUI():
     if g.isFullScreen == False:
@@ -10,11 +14,11 @@ def setCoreGameUI():
     g.frameGlobal.place(relx=0.5, rely=0.5, anchor='center')
 
 
-def createButton(frame, text, command):
+def createButton(frame, text, command, textColor = "white", bgColor="grey"):
     return tk.Button(frame, text=text,
                      width=g.buttonWidth,
                      height=g.buttonHeight,
-                     bg="gray", fg="white",
+                     bg=bgColor, fg=textColor,
                      command=command)
 
 
