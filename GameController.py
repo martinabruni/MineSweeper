@@ -13,7 +13,9 @@ class GameController:
 
     # Elisa
     def createMenuSettings(self):
-        pass
+        g.frameGlobal.destroy()
+        g.settingsGlobal = g.Settings(g.sizeTitle, g.textTitle, g.imagePath)
+        g.settingsGlobal.initializeMenu()
 
     def quitGame(self):
         g.frameGlobal.destroy()
