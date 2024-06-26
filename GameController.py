@@ -33,14 +33,9 @@ class GameController:
         self.createStats()
 
     def createBoard(self):
-        g.frameStats = tk.Frame(g.rootGlobal, bg="black")
-        g.frameStats.pack(pady=10)
-        g.timer = TimerApp(g.frameStats)
-        g.timer.reset_timer()
         setCoreGameUI()
         setWinCondition()
         g.boardGlobal = g.Board(g.frameGlobal)
-        g.boardGlobal.initializeBoard()
 
     def createTimer(self):
         g.frameTimer = tk.Frame(g.rootGlobal, bg="black")
@@ -62,15 +57,6 @@ class GameController:
     def updateCellsLabel(self):
         self.cells.set(f"    Celle da rivelare: {g.winCondition - g.revealedCellsGlobal}")
 
-
-     # Devid
-    def backToMenu(self):
-        g.frameGlobal.destroy()
-        g.frameStats.destroy()
-        g.frameTimer.destroy()
-        g.escapeRoot.destroy()
-        g.timer.label.destroy()
-        self.createMenu()
     def quitGame(self):
         if g.escapeRoot:
             g.escapeRoot.destroy()
@@ -78,7 +64,7 @@ class GameController:
 
     def restartGame(self):
         self.updateUI()
-        self.createBoard()
+        self.createGame()
 
     def checkWin(self) -> bool:
         if g.revealedCellsGlobal == g.winCondition:
@@ -104,6 +90,9 @@ class GameController:
         if g.escapeRoot:
             g.escapeRoot.destroy()
             g.escapeRoot = None
+        if g.frameTimer:
+            g.frameTimer.destroy()
+            g.frameTimer = None
         if g.timer:
             g.timer.label.destroy()
 
