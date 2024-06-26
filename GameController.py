@@ -1,10 +1,12 @@
 from Utils.lib import *
 from Utils import generic as g
 from Entities.Timer import TimerApp
+import pygame
 
 class GameController:
     def __init__(self):
         self.app = None
+        self.__startMusic()
 
     # Elisa
     def createMenu(self):
@@ -63,6 +65,13 @@ class GameController:
     def updateUI(self):
         pass
 
+    # MOSECA
+    def __startMusic(self):
+        print("Start music")
+        pygame.mixer.init()  # Inizializza il mixer audio di pygame
+        pygame.mixer.music.load(g.music)  # Carica il file musicale
+        pygame.mixer.music.set_volume(g.volumeLevel)
+        pygame.mixer.music.play(-1)  # Riproduci la music in loop (-1 significa loop infinito)
 
 # Daniela
 if __name__ == "__main__":
