@@ -23,10 +23,21 @@ class CustomFrame:
         generic.rootGlobal.title(self.__textTitle)
         lib.setRootFullScreen(generic.rootGlobal)
         generic.rootGlobal.configure(bg="black")
+        
+       
 
     def __setFrame(self):
         generic.frameGlobal = tk.Frame(generic.rootGlobal, bg="black", bd=5, relief="groove")
-        generic.frameGlobal.pack(fill="both", expand=True, padx=10, pady=10)
+        generic.frameGlobal.pack(fill="both", expand=True, padx=10, pady=10) 
+        
+        sfondo_path = generic.imageMenuB  
+        sfondo_image = Image.open(sfondo_path)
+        sfondo_photo = ImageTk.PhotoImage(sfondo_image)
+ 
+         # Crea una Label per contenere l'immagine di sfondo
+        sfondo_label = tk.Label(generic.frameGlobal, image=sfondo_photo)
+        sfondo_label.image = sfondo_photo  # Mantiene un riferimento all'immagine
+        sfondo_label.place(relwidth=1, relheight=1)  # Copre tutta la finestra
 
     def __setTitle(self):
         customFont = tkFont.Font(family="Terminal", size=self.__sizeTitle)
