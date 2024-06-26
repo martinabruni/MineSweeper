@@ -21,10 +21,7 @@ class GameController:
         g.settingsGlobal.initializeMenu()
 
     def quitGame(self):
-        g.frameGlobal.destroy()
         g.rootGlobal.destroy()
-        if g.escapeRoot:
-            g.escapeRoot.destroy()
 
     def createBoard(self):
         g.frameStats = tk.Frame(g.rootGlobal, bg="black")
@@ -41,6 +38,7 @@ class GameController:
         g.frameGlobal.destroy()
         g.frameStats.destroy()
         g.escapeRoot.destroy()
+        g.escapeRoot = None
         g.timer.label.destroy()
         self.createMenu()
 
@@ -48,6 +46,7 @@ class GameController:
         g.frameGlobal.destroy()
         g.frameStats.destroy()
         g.escapeRoot.destroy()
+        g.escapeRoot = None
         g.timer.label.destroy()
         self.createBoard()
 
