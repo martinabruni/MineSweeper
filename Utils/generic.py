@@ -12,14 +12,15 @@ bomb = "\U0001F4A3"
 buttonWidth = 10
 buttonHeight = 2
 imagePath = "Assets/icona.png"
-imageSettings = "Assets/settingsImage.jpg"
+imageSettings = "Assets/settingsImage.png"
 gifBomba = "gifb.gif"
 gifBandiera = "giff.gif"
 music = "Assets/retrovideogame.mp3"
 volumeLevel = 0.1
 isFullScreen = False
 sizeTitle = 75
-textTitle = "CAMPO MINATO"
+gameTitle = "CAMPO MINATO"
+settingsTitle = "SETTINGS"
 
 # Game logic variables
 boardSizeGlobal = 5

@@ -10,17 +10,19 @@ class GameController:
     
     # Elisa
     def createMenu(self):
-        g.frameGlobal.destroy()
-        g.menuGlobal = g.Menu(g.sizeTitle, g.textTitle, g.imagePath)
+        self.updateUI()
+        g.menuGlobal = g.Menu(g.sizeTitle, g.gameTitle, g.imagePath)
         g.menuGlobal.initializeMenu()
 
     # Elisa
     def createMenuSettings(self):
-        g.frameGlobal.destroy()
-        g.settingsGlobal = g.Settings(g.sizeTitle, g.textTitle, g.imagePath)
+        self.updateUI()
+        g.settingsGlobal = g.Settings(g.sizeTitle, g.settingsTitle, g.imageSettings)
         g.settingsGlobal.initializeMenu()
 
     def quitGame(self):
+        if g.escapeRoot:
+            g.escapeRoot.destroy()
         g.rootGlobal.destroy()
 
     def createBoard(self):
@@ -35,19 +37,21 @@ class GameController:
 
     # Devid
     def backToMenu(self):
-        g.frameGlobal.destroy()
-        g.frameStats.destroy()
-        g.escapeRoot.destroy()
-        g.escapeRoot = None
-        g.timer.label.destroy()
+        self.updateUI()
+        # g.frameGlobal.destroy()
+        # g.frameStats.destroy()
+        # g.escapeRoot.destroy()
+        # g.escapeRoot = None
+        # g.timer.label.destroy()
         self.createMenu()
 
     def restartGame(self):
-        g.frameGlobal.destroy()
-        g.frameStats.destroy()
-        g.escapeRoot.destroy()
-        g.escapeRoot = None
-        g.timer.label.destroy()
+        self.updateUI()
+        # g.frameGlobal.destroy()
+        # g.frameStats.destroy()
+        # g.escapeRoot.destroy()
+        # g.escapeRoot = None
+        # g.timer.label.destroy()
         self.createBoard()
 
     def checkWin(self) -> bool:
@@ -65,7 +69,17 @@ class GameController:
             return False
 
     def updateUI(self):
-        pass
+        if g.frameGlobal:
+            g.frameGlobal.destroy()
+            g.frameGlobal = None
+        if g.frameStats:
+            g.frameStats.destroy()
+            g.frameStats = None
+        if g.escapeRoot:
+            g.escapeRoot.destroy()
+            g.escapeRoot = None
+        if g.timer:
+            g.timer.label.destroy()
 
     # MOSECA
     def __startMusic(self):
