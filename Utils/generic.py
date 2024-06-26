@@ -12,6 +12,7 @@ bomb = "\U0001F4A3"
 buttonWidth = 10
 buttonHeight = 2
 imagePath = "Assets/icona.png"
+imageMenuB="Assets/sfondoMenu.png"
 imageSettings = "Assets/settingsImage.png"
 gifBomba = "gifb.gif"
 gifBandiera = "giff.gif"
