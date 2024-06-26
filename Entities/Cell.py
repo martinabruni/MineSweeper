@@ -70,10 +70,6 @@ class Cell:
         else:
             self.revealCell()
 
-
-
-
-
     def __onRightClick(self):
         if self.__revealed:
             return
