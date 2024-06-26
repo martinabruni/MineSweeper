@@ -13,7 +13,6 @@ class CustomFrame:
         self.__textTitle = textTitle
         self.__image = imagePath
 
-
     def initializeMenu(self):
         self.__setRoot()
         self.__setFrame()
@@ -41,4 +40,3 @@ class CustomFrame:
         self.__image = ImageTk.PhotoImage(image=Image.fromarray(image))
         imageLabel = tk.Label(generic.frameGlobal, image=self.__image, bg="black")
         imageLabel.place(relx=0.5, rely=0.2, anchor='center')
-

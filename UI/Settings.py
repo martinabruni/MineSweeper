@@ -16,7 +16,7 @@ class Settings(CustomFrame):
         self.__buttonMedium = None
         self.__buttonHard = None
         self.__saveButton = None
-            
+
     def initializeMenu(self):
         CustomFrame.initializeMenu(self)
         self.__buttonEasy = lib.createButton(generic.frameGlobal, "Easy", self.__setEasyLevel, bg="green")
@@ -25,7 +25,7 @@ class Settings(CustomFrame):
         self.__buttonEasy.place(relx=0.5, rely=0.6, anchor='center')
         self.__buttonMedium.place(relx=0.5, rely=0.7, anchor='center')
         self.__buttonHard.place(relx=0.5, rely=0.8, anchor='center')
-            
+
     def __setHardLevel(self):
         generic.boardSizeGlobal = 15
         generic.bombsPercentageGlobal = 16
