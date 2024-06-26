@@ -21,7 +21,8 @@ class GameController:
     def quitGame(self):
         g.frameGlobal.destroy()
         g.rootGlobal.destroy()
-        g.escapeRoot.destroy()
+        if g.escapeRoot:
+            g.escapeRoot.destroy()
 
     def createBoard(self):
         self.app = TimerApp(g.rootGlobal)
