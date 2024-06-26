@@ -14,6 +14,7 @@ class Menu(CustomFrame):
         CustomFrame.__init__(self, sizeTitle, textTitle, imagePath)
         self.__buttonStart = None
         self.__buttonSettings = None
+        self.__buttonQuit = None
 
     def initializeMenu(self):
         CustomFrame.initializeMenu(self)
@@ -21,6 +22,8 @@ class Menu(CustomFrame):
         self.__buttonStart = lib.createButton(generic.frameGlobal, "Start", self.__openGame)
         self.__buttonSettings.place(relx=0.5, rely=0.7, anchor='center')
         self.__buttonStart.place(relx=0.5, rely=0.6, anchor='center')
+        self.__buttonQuit = lib.createButton(generic.frameGlobal, "Quit", generic.gameController.quitGame)
+        self.__buttonQuit.place(relx=0.5, rely=0.8, anchor='center')
         self.__startMusic()
 
     def __openSettings(self):
@@ -32,6 +35,7 @@ class Menu(CustomFrame):
         self.__buttonStart.config(bg="white", fg="gray")
         generic.frameGlobal.destroy()
         generic.gameController.createBoard()
+
 
     # MOSECA
     def __startMusic(self):
