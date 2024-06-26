@@ -1,5 +1,7 @@
 import tkinter as tk
 from GameController import GameController
+import math
+from Entities.Timer import TimerApp
 from UI.Menu import Menu
 from Entities.Board import Board
 from UI.Settings import Settings
@@ -35,3 +37,4 @@ settingsGlobal = None
 
 # Core gameplay objects
 boardGlobal = None
+app = TimerApp(rootGlobal)

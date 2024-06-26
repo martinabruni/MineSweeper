@@ -1,6 +1,6 @@
 from Utils.lib import *
 from Utils import generic as g
-
+from Entities.Timer import TimerApp
 
 class GameController:
     def __init__(self):
@@ -24,6 +24,8 @@ class GameController:
         g.escapeRoot.destroy()
 
     def createBoard(self):
+        g.app.reset_timer()
+        g.app.start_timer()
         setCoreGameUI()
         setWinCondition()
         g.boardGlobal = g.Board(g.frameGlobal)
@@ -42,12 +44,14 @@ class GameController:
 
     def checkWin(self) -> bool:
         if g.revealedCellsGlobal == g.winCondition:
+            g.app.stop_timer()
             return True
         else:
             return False
 
     def checkLose(self, cellValue: int) -> bool:
         if cellValue == -1:
+            g.app.stop_timer()
             return True
         else:
             return False
