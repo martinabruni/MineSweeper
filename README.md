@@ -1,18 +1,6 @@
 # MineSweeper
 ITS 2024 - Progetto d'esame Python
 
-Task da fare:
-- Il menu delle settings (daniela ed elisa)
-- modifica lose e win windows (francesco)
-- pulsanti quit, menu e restart (francesco)
-- aggiungere nome utente
-- leaderboard (con file)
-- statistiche partite
-- regolazione volume musica
-- regolazione finestra
-- ripulire il codice
-
-
 Comandi per utilizzare git:
 1) Clonare la repository, in modo da creare una copia locale dei file di github
     ```commandline
