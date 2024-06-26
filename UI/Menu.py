@@ -24,7 +24,6 @@ class Menu(CustomFrame):
         self.__buttonQuit = lib.createButton(generic.frameGlobal, "Quit", generic.gameController.quitGame)
         self.__buttonQuit.place(relx=0.5, rely=0.8, anchor='center')
 
-
     def __openSettings(self):
         self.__buttonSettings.config(bg="white", fg="gray")
         generic.frameGlobal.destroy()

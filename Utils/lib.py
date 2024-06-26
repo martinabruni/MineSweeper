@@ -7,6 +7,7 @@ import Utils.generic as g
 def setWinCondition():
     g.winCondition = math.ceil(g.boardSizeGlobal ** 2 * (100 - g.bombsPercentageGlobal) / 100)
 
+
 def setCoreGameUI():
     if g.isFullScreen == False:
         setRootPosition(g.rootGlobal)
@@ -14,7 +15,7 @@ def setCoreGameUI():
     g.frameGlobal.place(relx=0.5, rely=0.5, anchor='center')
 
 
-def createButton(frame, text, command, fg ="white", bg="grey"):
+def createButton(frame, text, command, fg="white", bg="grey"):
     return tk.Button(frame, text=text,
                      width=g.buttonWidth,
                      height=g.buttonHeight,
@@ -55,7 +56,7 @@ def createEscapeRoot(title):
     button_continue = tk.Button(dialog, text="Restart", command=g.gameController.restartGame)
     button_continue.pack(side=tk.LEFT, padx=10, pady=10)
 
-    button_exit = tk.Button(dialog, text="Menu", command=g.gameController.backToMenu)
+    button_exit = tk.Button(dialog, text="Menu", command=g.gameController.createMenu)
     button_exit.pack(side=tk.RIGHT, padx=10, pady=10)
 
     button_close = tk.Button(dialog, text="Quit", command=g.gameController.quitGame)

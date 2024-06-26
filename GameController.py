@@ -3,11 +3,12 @@ from Utils import generic as g
 from Entities.Timer import TimerApp
 import pygame
 
+
 class GameController:
     def __init__(self):
         self.app = None
         self.__startMusic()
-    
+
     # Elisa
     def createMenu(self):
         self.updateUI()
@@ -35,23 +36,8 @@ class GameController:
         g.boardGlobal = g.Board(g.frameGlobal)
         g.boardGlobal.initializeBoard()
 
-    # Devid
-    def backToMenu(self):
-        self.updateUI()
-        # g.frameGlobal.destroy()
-        # g.frameStats.destroy()
-        # g.escapeRoot.destroy()
-        # g.escapeRoot = None
-        # g.timer.label.destroy()
-        self.createMenu()
-
     def restartGame(self):
         self.updateUI()
-        # g.frameGlobal.destroy()
-        # g.frameStats.destroy()
-        # g.escapeRoot.destroy()
-        # g.escapeRoot = None
-        # g.timer.label.destroy()
         self.createBoard()
 
     def checkWin(self) -> bool:
@@ -87,6 +73,7 @@ class GameController:
         pygame.mixer.music.load(g.music)  # Carica il file musicale
         pygame.mixer.music.set_volume(g.volumeLevel)
         pygame.mixer.music.play(-1)  # Riproduci la music in loop (-1 significa loop infinito)
+
 
 # Daniela
 if __name__ == "__main__":
