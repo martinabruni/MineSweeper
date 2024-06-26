@@ -1,13 +1,12 @@
 import tkinter as tk
 class TimerApp:
-    def __init__(self, root):
-        self.root = root
-        self.root.title("Timer")
+    def __init__(self, frame: tk.Frame):
+        self.frame = frame
 
         self.time_left_var = tk.StringVar()
         self.time_left_var.set("00:00:00")
 
-        self.label = tk.Label(root, textvariable=self.time_left_var, font=("Helvetica", 48))
+        self.label = tk.Label(self.frame, textvariable=self.time_left_var, font=("Terminal", 30),bg="black", fg="red")
         self.label.pack(pady=20)
 
         self.elapsed_time = 0
@@ -36,4 +35,4 @@ class TimerApp:
             self.time_left_var.set(f"{hours:02d}:{mins:02d}:{secs:02d}")
             self.elapsed_time += 1
             # Chiama di nuovo update_timer dopo 1 secondo
-            self.root.after(1000, self.update_timer)
+            self.frame.after(1000, self.update_timer)

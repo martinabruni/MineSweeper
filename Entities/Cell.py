@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 from Utils import lib as l
 from Utils import generic as g
+import GameController
 
 
 class Cell:
@@ -16,7 +17,7 @@ class Cell:
         self.__adjacentCell = []
 
     def __defineCellBehavior(self):
-        self.__button = tk.Button(self.__frame, text="", width=3, height=1, font=("Helvetica", 14, "bold"),
+        self.__button = tk.Button(self.__frame, text="", width=3, height=1, font=("Helvetica", 11, "bold"),
                                   relief=tk.RAISED)
         self.__button.grid(row=self.__x, column=self.__y)
         self.__button.bind("<Button-1>", lambda e: self.__onLeftClick())
@@ -58,6 +59,8 @@ class Cell:
         self.__button.config(text=g.redFlag, state="disabled")
 
     def __onLeftClick(self):
+        if g.revealedCellsGlobal == 0:
+            g.timer.start_timer()
         if self.__flagged or self.__revealed:
             return
         elif g.gameController.checkLose(self.__value):
@@ -66,6 +69,10 @@ class Cell:
             self.__revealAdjacentCell()
         else:
             self.revealCell()
+
+
+
+
 
     def __onRightClick(self):
         if self.__revealed:

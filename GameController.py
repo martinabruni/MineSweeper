@@ -7,7 +7,7 @@ class GameController:
     def __init__(self):
         self.app = None
         self.__startMusic()
-
+    
     # Elisa
     def createMenu(self):
         g.frameGlobal.destroy()
@@ -27,9 +27,10 @@ class GameController:
             g.escapeRoot.destroy()
 
     def createBoard(self):
-        self.app = TimerApp(g.rootGlobal)
-        self.app.reset_timer()
-        self.app.start_timer()
+        g.frameStats = tk.Frame(g.rootGlobal, bg="black")
+        g.frameStats.pack(pady=10)
+        g.timer = TimerApp(g.frameStats)
+        g.timer.reset_timer()
         setCoreGameUI()
         setWinCondition()
         g.boardGlobal = g.Board(g.frameGlobal)
@@ -38,26 +39,28 @@ class GameController:
     # Devid
     def backToMenu(self):
         g.frameGlobal.destroy()
+        g.frameStats.destroy()
         g.escapeRoot.destroy()
-        self.app.label.destroy()
+        g.timer.label.destroy()
         self.createMenu()
 
     def restartGame(self):
         g.frameGlobal.destroy()
+        g.frameStats.destroy()
         g.escapeRoot.destroy()
-        self.app.label.destroy()
+        g.timer.label.destroy()
         self.createBoard()
 
     def checkWin(self) -> bool:
         if g.revealedCellsGlobal == g.winCondition:
-            self.app.stop_timer()
+            g.timer.stop_timer()
             return True
         else:
             return False
 
     def checkLose(self, cellValue: int) -> bool:
         if cellValue == -1:
-            self.app.stop_timer()
+            g.timer.stop_timer()
             return True
         else:
             return False
