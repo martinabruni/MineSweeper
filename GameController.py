@@ -4,7 +4,7 @@ from Entities.Timer import TimerApp
 
 class GameController:
     def __init__(self):
-        pass
+        self.app = None
 
     # Elisa
     def createMenu(self):
@@ -24,8 +24,9 @@ class GameController:
         g.escapeRoot.destroy()
 
     def createBoard(self):
-        g.app.reset_timer()
-        g.app.start_timer()
+        self.app = TimerApp(g.rootGlobal)
+        self.app.reset_timer()
+        self.app.start_timer()
         setCoreGameUI()
         setWinCondition()
         g.boardGlobal = g.Board(g.frameGlobal)
@@ -35,23 +36,25 @@ class GameController:
     def backToMenu(self):
         g.frameGlobal.destroy()
         g.escapeRoot.destroy()
+        self.app.label.destroy()
         self.createMenu()
 
     def restartGame(self):
         g.frameGlobal.destroy()
         g.escapeRoot.destroy()
+        self.app.label.destroy()
         self.createBoard()
 
     def checkWin(self) -> bool:
         if g.revealedCellsGlobal == g.winCondition:
-            g.app.stop_timer()
+            self.app.stop_timer()
             return True
         else:
             return False
 
     def checkLose(self, cellValue: int) -> bool:
         if cellValue == -1:
-            g.app.stop_timer()
+            self.app.stop_timer()
             return True
         else:
             return False

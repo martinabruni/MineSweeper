@@ -37,4 +37,4 @@ settingsGlobal = None
 
 # Core gameplay objects
 boardGlobal = None
-app = TimerApp(rootGlobal)
+
