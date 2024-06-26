@@ -61,6 +61,7 @@ class Cell:
     def __onLeftClick(self):
         if g.revealedCellsGlobal == 0:
             g.timer.start_timer()
+            g.boardGlobal.initializeBoard(self)
         if self.__flagged or self.__revealed:
             return
         elif g.gameController.checkLose(self.__value):
