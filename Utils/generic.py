@@ -37,4 +37,4 @@ settingsGlobal = None
 
 # Core gameplay objects
 boardGlobal = None
-
+timer = None
