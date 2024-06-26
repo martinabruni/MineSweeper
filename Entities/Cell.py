@@ -34,6 +34,7 @@ class Cell:
             self.__button.config(state="disabled", relief=tk.SUNKEN, bg="light grey", text=str(self.__value))
 
         g.revealedCellsGlobal += 1
+        g.gameController.updateCellsLabel()
         if g.gameController.checkWin():
             self.win()
 
@@ -61,6 +62,7 @@ class Cell:
     def __onLeftClick(self):
         if g.revealedCellsGlobal == 0:
             g.timer.start_timer()
+            g.boardGlobal.initializeBoard(self)
         if self.__flagged or self.__revealed:
             return
         elif g.gameController.checkLose(self.__value):
