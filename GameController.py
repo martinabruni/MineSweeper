@@ -67,7 +67,6 @@ class GameController:
 
     # MOSECA
     def __startMusic(self):
-        print("Start music")
         pygame.mixer.init()  # Inizializza il mixer audio di pygame
         pygame.mixer.music.load(g.music)  # Carica il file musicale
         pygame.mixer.music.set_volume(g.volumeLevel)
