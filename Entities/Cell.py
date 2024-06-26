@@ -49,14 +49,13 @@ class Cell:
     def win(self):
         l.createEscapeRoot("Hai Vinto :)")
 
-    def __flagCell(self):
-        if self.__flagged == False:
-            self.__flagged = True
-            self.__button.config(text=g.redFlag, state="disabled")
+    def __unFlagCell(self):
+        self.__button.config(text="", state="normal")
+        self.__flagged = False
 
-        else:
-            self.__button.config(text="", state="normal")
-            self.__flagged = False
+    def __flagCell(self):
+        self.__flagged = True
+        self.__button.config(text=g.redFlag, state="disabled")
 
     def __onLeftClick(self):
         if self.__flagged or self.__revealed:
@@ -69,7 +68,12 @@ class Cell:
             self.revealCell()
 
     def __onRightClick(self):
-        self.__flagCell()
+        if self.__revealed:
+            return
+        elif self.__flagged == False:
+            self.__flagCell()
+        else:
+            self.__unFlagCell()
 
     def printCell(self):
         print(f"""Bottone {self.__x, self.__y}: {self.__value}""")
