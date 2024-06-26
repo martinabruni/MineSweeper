@@ -21,11 +21,6 @@ class GameController:
         g.settingsGlobal = g.Settings(g.sizeTitle, g.settingsTitle, g.imageSettings)
         g.settingsGlobal.initializeMenu()
 
-    def quitGame(self):
-        if g.escapeRoot:
-            g.escapeRoot.destroy()
-        g.rootGlobal.destroy()
-
     def createBoard(self):
         g.frameStats = tk.Frame(g.rootGlobal, bg="black")
         g.frameStats.pack(pady=10)
@@ -34,7 +29,11 @@ class GameController:
         setCoreGameUI()
         setWinCondition()
         g.boardGlobal = g.Board(g.frameGlobal)
-        g.boardGlobal.initializeBoard()
+
+    def quitGame(self):
+        if g.escapeRoot:
+            g.escapeRoot.destroy()
+        g.rootGlobal.destroy()
 
     def restartGame(self):
         self.updateUI()
