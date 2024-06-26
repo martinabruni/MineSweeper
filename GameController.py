@@ -6,6 +6,7 @@ import pygame
 
 class GameController:
     def __init__(self):
+        self.cells = tk.StringVar()
         self.app = None
         self.__startMusic()
 
@@ -21,14 +22,40 @@ class GameController:
         g.settingsGlobal = g.Settings(g.sizeTitle, g.settingsTitle, g.imageSettings)
         g.settingsGlobal.initializeMenu()
 
+    def quitGame(self):
+        g.frameGlobal.destroy()
+        g.rootGlobal.destroy()
+        g.escapeRoot.destroy()
+
+    def createGame(self):
+        self.createBoard()
+        self.createTimer()
+        self.createStats()
+
     def createBoard(self):
-        g.frameStats = tk.Frame(g.rootGlobal, bg="black")
-        g.frameStats.pack(pady=10)
-        g.timer = TimerApp(g.frameStats)
-        g.timer.reset_timer()
         setCoreGameUI()
         setWinCondition()
         g.boardGlobal = g.Board(g.frameGlobal)
+
+    def createTimer(self):
+        g.frameTimer = tk.Frame(g.rootGlobal, bg="black")
+        g.frameTimer.pack(pady=10)
+        g.timer = TimerApp(g.frameTimer)
+        g.timer.reset_timer()
+
+    def createStats(self):
+        g.frameStats = tk.Frame(g.rootGlobal, bg="black")
+        g.frameStats.pack(side="left", padx=1, pady=10)
+        bombs = tk.StringVar()
+        bombs.set(f"Bombe: {g.boardSizeGlobal**2 - g.winCondition} ")
+        bombslabel = tk.Label(g.frameStats, textvariable=bombs, font=("Terminal", 22), bg="black", fg="red")
+        bombslabel.grid(row=0, column=1, columnspan=1, padx=0,pady=0)
+        self.cells.set(f"    Celle da rivelare: {g.winCondition - g.revealedCellsGlobal} ")
+        cellslabel = tk.Label(g.frameStats, textvariable=self.cells, font=("Terminal", 22), bg="black", fg="red")
+        cellslabel.grid(row=1, column=1, columnspan=2, padx=0, pady=0)
+
+    def updateCellsLabel(self):
+        self.cells.set(f"    Celle da rivelare: {g.winCondition - g.revealedCellsGlobal}")
 
     def quitGame(self):
         if g.escapeRoot:
@@ -37,7 +64,7 @@ class GameController:
 
     def restartGame(self):
         self.updateUI()
-        self.createBoard()
+        self.createGame()
 
     def checkWin(self) -> bool:
         if g.revealedCellsGlobal == g.winCondition:
@@ -63,6 +90,9 @@ class GameController:
         if g.escapeRoot:
             g.escapeRoot.destroy()
             g.escapeRoot = None
+        if g.frameTimer:
+            g.frameTimer.destroy()
+            g.frameTimer = None
         if g.timer:
             g.timer.label.destroy()
 
