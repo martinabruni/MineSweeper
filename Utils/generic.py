@@ -32,6 +32,7 @@ winCondition = 0
 escapeRoot = None
 rootGlobal = tk.Tk()
 frameGlobal = tk.Frame(rootGlobal)
+frameTimer = None
 frameStats = None
 gameController = GameController()
 menuGlobal = None
@@ -40,3 +41,4 @@ settingsGlobal = None
 # Core gameplay objects
 boardGlobal = None
 timer = None
+

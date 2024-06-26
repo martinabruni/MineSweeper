@@ -2,6 +2,7 @@ import tkinter as tk
 import tkinter.font as tkFont
 
 import cv2
+import pygame
 from PIL import Image, ImageTk
 from Utils.CustomFrame import CustomFrame
 from Utils import lib
@@ -32,4 +33,11 @@ class Menu(CustomFrame):
     def __openGame(self):
         self.__buttonStart.config(bg="white", fg="gray")
         generic.frameGlobal.destroy()
-        generic.gameController.createBoard()
+        generic.gameController.createGame()
+
+    # MOSECA
+    def __startMusic(self):
+        pygame.mixer.init()  # Inizializza il mixer audio di pygame
+        pygame.mixer.music.load(generic.music)  # Carica il file musicale
+        pygame.mixer.music.set_volume(generic.volumeLevel)
+        pygame.mixer.music.play(-1)  # Riproduci la music in loop (-1 significa loop infinito)
