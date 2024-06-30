@@ -41,13 +41,15 @@ class CustomFrame:
 
     def __setTitle(self):
         customFont = tkFont.Font(family="Terminal", size=self.__sizeTitle)
-        label = tk.Label(generic.frameGlobal, text=self.__textTitle, font=customFont, fg="white", bg="black")
-        label.place(relx=0.5, rely=0.4, anchor='center')
+        label = tk.Label(generic.frameGlobal, text=self.__textTitle, font=customFont, fg="white", bg="#191970", width=50)
+        label.place(relx=0.52, rely=0.35, anchor='center')
+        
+
 
     def __setImage(self):
         image = cv2.imread(self.__image)
         image = cv2.resize(image, (150, 150))
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
         self.__image = ImageTk.PhotoImage(image=Image.fromarray(image))
-        imageLabel = tk.Label(generic.frameGlobal, image=self.__image, bg="black")
+        imageLabel = tk.Label(generic.frameGlobal, image=self.__image, bg="#191970",width=10000)
         imageLabel.place(relx=0.5, rely=0.2, anchor='center')
