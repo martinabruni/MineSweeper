@@ -22,11 +22,6 @@ class GameController:
         g.settingsGlobal = g.Settings(g.sizeTitle, g.settingsTitle, g.imageSettings)
         g.settingsGlobal.initializeMenu()
 
-    def quitGame(self):
-        g.frameGlobal.destroy()
-        g.rootGlobal.destroy()
-        g.escapeRoot.destroy()
-
     def createGame(self):
         self.createBoard()
         self.createTimer()
