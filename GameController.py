@@ -64,6 +64,7 @@ class GameController:
     def checkWin(self) -> bool:
         if g.revealedCellsGlobal == g.winCondition:
             g.timer.stop_timer()
+            g.endGame = True
             return True
         else:
             return False
@@ -71,6 +72,7 @@ class GameController:
     def checkLose(self, cellValue: int) -> bool:
         if cellValue == -1:
             g.timer.stop_timer()
+            g.endGame = True
             return True
         else:
             return False
@@ -91,14 +93,8 @@ class GameController:
         if g.timer:
             g.timer.label.destroy()
 
-    # MOSECA
     def __startMusic(self):
         pygame.mixer.init()  # Inizializza il mixer audio di pygame
         pygame.mixer.music.load(g.music)  # Carica il file musicale
         pygame.mixer.music.set_volume(g.volumeLevel)
         pygame.mixer.music.play(-1)  # Riproduci la music in loop (-1 significa loop infinito)
-
-
-# Daniela
-if __name__ == "__main__":
-    pass

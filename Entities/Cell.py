@@ -46,10 +46,11 @@ class Cell:
     def lose(self):
         g.boardGlobal.revealBombs()
         l.createEscapeRoot("Hai Perso :(")
-        # video bomba che esplode
+        return True
 
     def win(self):
         l.createEscapeRoot("Hai Vinto :)")
+        return True
 
     def __unFlagCell(self):
         self.__button.config(text="", state="normal")
@@ -60,6 +61,8 @@ class Cell:
         self.__button.config(text=g.redFlag, state="disabled")
 
     def __onLeftClick(self):
+        if g.endGame:
+            return
         if g.revealedCellsGlobal == 0:
             g.timer.start_timer()
             g.boardGlobal.initializeBoard(self)
@@ -73,6 +76,8 @@ class Cell:
             self.revealCell()
 
     def __onRightClick(self):
+        if g.endGame:
+            return
         if self.__revealed:
             return
         elif self.__flagged == False:
@@ -134,7 +139,3 @@ class Cell:
     @y.setter
     def y(self, x: int):
         self.__y = x
-
-
-if __name__ == "__main__":
-    pass

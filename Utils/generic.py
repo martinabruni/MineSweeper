@@ -1,6 +1,5 @@
 import tkinter as tk
 from GameController import GameController
-import math
 from Entities.Timer import TimerApp
 from UI.Menu import Menu
 from Entities.Board import Board
@@ -27,6 +26,7 @@ boardSizeGlobal = 5
 bombsPercentageGlobal = 20
 revealedCellsGlobal = 0
 winCondition = 0
+endGame = False
 
 # UI objects
 escapeRoot = None

@@ -7,6 +7,7 @@ from Utils import generic as g
 
 class Board:
     def __init__(self, frame: tk.Frame):
+        g.endGame = False
         g.revealedCellsGlobal = 0
         self.__size = g.boardSizeGlobal
         self.__bombs = int(self.__size ** 2 * (g.bombsPercentageGlobal / 100))
@@ -27,16 +28,12 @@ class Board:
         return self.__bombsList
 
     def initializeBoard(self, firstCell: Cell):
-        # g.revealedCellsGlobal = 0
         self.__placeBombs(firstCell)
         self.__assignValues()
-        self.printBoard()
 
     def __placeBombs(self, firstCell: Cell):
         placedBombs = 0
         while placedBombs < self.__bombs:
-            self.printBoard()
-            # x, y = 3,4
             x, y = random.randint(0, self.__size - 1), random.randint(0, self.__size - 1)
             if self.__board[x][y].value != -1:
                 if firstCell.x - 1 <= x <= firstCell.x + 1 and firstCell.y - 1 <= y <= firstCell.y + 1:
@@ -89,14 +86,3 @@ class Board:
         for row in self.__board:
             for cell in row:
                 cell.printCell()
-
-
-# codice di test per vedere se la logica funziona
-if __name__ == "__main__":
-    root = tk.Tk()
-    frame = tk.Frame(root)
-    frame.pack()
-    b = Board(10, 5, frame)
-    b.initializeBoard()
-    b.printBoard()
-    root.mainloop()
