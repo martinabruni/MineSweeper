@@ -43,10 +43,10 @@ class GameController:
         g.frameStats.pack(side="left", padx=1, pady=10)
         bombs = tk.StringVar()
         bombs.set(f"Bombe: {g.boardSizeGlobal**2 - g.winCondition} ")
-        bombslabel = tk.Label(g.frameStats, textvariable=bombs, font=("Terminal", 22), bg="black", fg="red")
+        bombslabel = tk.Label(g.frameStats, textvariable=bombs, font=("Terminal", 15), bg="black", fg="red")
         bombslabel.grid(row=0, column=1, columnspan=1, padx=0,pady=0)
         self.cells.set(f"    Celle da rivelare: {g.winCondition - g.revealedCellsGlobal} ")
-        cellslabel = tk.Label(g.frameStats, textvariable=self.cells, font=("Terminal", 22), bg="black", fg="red")
+        cellslabel = tk.Label(g.frameStats, textvariable=self.cells, font=("Terminal", 15), bg="black", fg="red")
         cellslabel.grid(row=1, column=1, columnspan=2, padx=0, pady=0)
 
     def updateCellsLabel(self):
