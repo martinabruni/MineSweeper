@@ -2,7 +2,7 @@ import math
 import tkinter as tk
 import math
 import Utils.generic as g
-
+from PIL import Image, ImageTk
 
 def setWinCondition():
     g.winCondition = math.ceil(g.boardSizeGlobal ** 2 * (100 - g.bombsPercentageGlobal) / 100)
@@ -22,7 +22,34 @@ def createButton(frame, text, command, fg="white", bg="grey"):
                      bg=bg, fg=fg,
                      command=command)
 
-
+def pixelButton(frame,image,command,rely):
+    # Caricamento dell'immagine pixelata
+    pixel_image = Image.open(image)
+    pixel_image = pixel_image.resize((130, 60), Image.LANCZOS) 
+    photo = ImageTk.PhotoImage(pixel_image)
+    
+    # Creazione del bottone con immagine pixelata
+    button = tk.Button(
+        frame,
+        image=photo,
+        command=command,
+        borderwidth=0,
+        highlightthickness=0,
+        relief=tk.FLAT,        
+        activebackground="#000000",  
+        activeforeground="#000000"
+    )
+    button.image = photo 
+   
+    button.place(relx=0.5, rely=rely, anchor='center')  
+    
+def changeImage(image,button):
+    new_image = Image.open(image)
+    new_image = new_image.resize((100, 60), Image.LANCZOS)  # Ridimensiona l'immagine
+    new_photo = ImageTk.PhotoImage(new_image)
+    button.config(image=new_photo)
+    button.image = new_photo  # Mantieni il riferimento all'immagine  
+    
 def setRootPosition(root: tk.Tk, width=1200, height=700):
     screenW = root.winfo_screenwidth()
     screenH = root.winfo_screenheight()

@@ -19,12 +19,10 @@ class Settings(CustomFrame):
 
     def initializeMenu(self):
         CustomFrame.initializeMenu(self)
-        self.__buttonEasy = lib.createButton(generic.frameGlobal, "Easy", self.__setEasyLevel, bg="green")
-        self.__buttonMedium = lib.createButton(generic.frameGlobal, "Medium", self.__setMediumLevel, bg="orange")
-        self.__buttonHard = lib.createButton(generic.frameGlobal, "Hard", self.__setHardLevel, bg="red")
-        self.__buttonEasy.place(relx=0.5, rely=0.6, anchor='center')
-        self.__buttonMedium.place(relx=0.5, rely=0.7, anchor='center')
-        self.__buttonHard.place(relx=0.5, rely=0.8, anchor='center')
+        self.__buttonEasy = lib.pixelButton(generic.frameGlobal,generic.pixelEasy,self.__setEasyLevel,0.58)
+        self.__buttonMedium = lib.pixelButton(generic.frameGlobal,generic.pixelMedium,self.__setMediumLevel,0.70)
+        self.__buttonHard = lib.pixelButton(generic.frameGlobal,generic.pixelHard,self.__setHardLevel,0.81)
+        
 
     def __setHardLevel(self):
         generic.boardSizeGlobal = 15

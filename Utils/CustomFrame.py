@@ -29,6 +29,7 @@ class CustomFrame:
     def __setFrame(self):
         generic.frameGlobal = tk.Frame(generic.rootGlobal, bg="black", bd=5, relief="groove")
         generic.frameGlobal.pack(fill="both", expand=True, padx=10, pady=10) 
+       
         
         sfondo_path = generic.imageMenuB  
         sfondo_image = Image.open(sfondo_path)
@@ -41,15 +42,15 @@ class CustomFrame:
 
     def __setTitle(self):
         customFont = tkFont.Font(family="Terminal", size=self.__sizeTitle)
-        label = tk.Label(generic.frameGlobal, text=self.__textTitle, font=customFont, fg="white", bg="#191970", width=50)
-        label.place(relx=0.52, rely=0.35, anchor='center')
-        
+        label = tk.Label(generic.frameGlobal, text=self.__textTitle, font=customFont,fg="white", bg="#120E18", width=30)
+        label.place(relx=0.5, rely=0.23, anchor='center')
+       
 
 
     def __setImage(self):
         image = cv2.imread(self.__image)
-        image = cv2.resize(image, (150, 150))
+        image = cv2.resize(image, (130, 130))
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
         self.__image = ImageTk.PhotoImage(image=Image.fromarray(image))
-        imageLabel = tk.Label(generic.frameGlobal, image=self.__image, bg="#191970",width=10000)
-        imageLabel.place(relx=0.5, rely=0.2, anchor='center')
+        imageLabel = tk.Label(generic.frameGlobal, image=self.__image, bg="#120E18",width=1500)
+        imageLabel.place(relx=0.5, rely=0.1, anchor='center')
