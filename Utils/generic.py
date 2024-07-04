@@ -14,6 +14,21 @@ buttonHeight = 2
 imagePath = "Assets/icona.png"
 imageMenuB="Assets/sfondoMenu.png"
 imageSettings = "Assets/settingsImage.png"
+
+pixelStart= "Assets/StartButton.png"
+pixelSettings= "Assets/ButtonSettings.png"
+pixelQuit="Assets/ButtonQuit.png"
+pixelEasy="Assets/ButtonEasy.png"
+pixelMedium="Assets/ButtonMedium.png"
+pixelHard="Assets/ButtonHard.png"
+
+clickStart="Assets/StartButtonG.png"
+clickSetting="Assets/ButtonSettingG.png"
+clickQuit="Assets/ButtonQuitG.png"
+clickEasy="Assets/ButtonEasyG.png"
+clickMedium="Assets/ButtonMediumG.png"
+clickHard="Assets/ButtonHardG.png"
+
 gifBomba = "gifb.gif"
 gifBandiera = "giff.gif"
 music = "Assets/retrovideogame.mp3"
