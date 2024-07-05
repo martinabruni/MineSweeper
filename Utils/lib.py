@@ -1,6 +1,6 @@
-import math
 import tkinter as tk
 import math
+
 import Utils.generic as g
 
 
@@ -42,28 +42,32 @@ def setRootFullScreen(root: tk.Tk):
     root.bind("<Escape>", lambda e: endFullScreen(root))
     g.isFullScreen = True
 
-
 def createEscapeRoot(title):
     g.escapeRoot = tk.Tk()
     g.escapeRoot.withdraw()
 
     dialog = tk.Toplevel(g.escapeRoot)
     dialog.title("Scegli un'opzione")
+    dialog.minsize(300, 150)
 
-    label = tk.Label(dialog, text=title)
+    frame = tk.Frame(dialog, padx=20, pady=20, bg="lightgray")
+    frame.pack(fill=tk.BOTH, expand=True)
+
+    custom_font = tk.font.Font(family="Helvetica", size=12, weight="bold")
+
+    label = tk.Label(frame, text=title, font=custom_font, fg="blue", bg="lightgray")
     label.pack(pady=10)
 
-    button_continue = tk.Button(dialog, text="Restart", command=g.gameController.restartGame)
+    button_continue = tk.Button(frame, text="Restart", command=g.gameController.restartGame, bg="green", fg="white", font=custom_font)
     button_continue.pack(side=tk.LEFT, padx=10, pady=10)
 
-    button_exit = tk.Button(dialog, text="Menu", command=g.gameController.createMenu)
+    button_exit = tk.Button(frame, text="Menu", command=g.gameController.createMenu, bg="orange", fg="white", font=custom_font)
     button_exit.pack(side=tk.RIGHT, padx=10, pady=10)
 
-    button_close = tk.Button(dialog, text="Quit", command=g.gameController.quitGame)
+    button_close = tk.Button(frame, text="Quit", command=g.gameController.quitGame, bg="red", fg="white", font=custom_font)
     button_close.pack(side=tk.LEFT, padx=10, pady=10)
 
     dialog.mainloop()
-
 
 if __name__ == "__name__":
     root = tk.Tk()

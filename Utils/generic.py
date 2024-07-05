@@ -12,7 +12,7 @@ buttonWidth = 10
 buttonHeight = 2
 imagePath = "Assets/icona.png"
 imageSettings = "Assets/settingsImage.png"
-gifBomba = "gifb.gif"
+gifBomba = "bomb.gif"
 gifBandiera = "giff.gif"
 music = "Assets/retrovideogame.mp3"
 volumeLevel = 0.1
@@ -22,7 +22,7 @@ gameTitle = "CAMPO MINATO"
 settingsTitle = "SETTINGS"
 
 # Game logic variables
-boardSizeGlobal = 5
+boardSizeGlobal = 7
 bombsPercentageGlobal = 20
 revealedCellsGlobal = 0
 winCondition = 0
