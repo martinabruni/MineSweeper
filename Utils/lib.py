@@ -68,7 +68,7 @@ def endFullScreen(root: tk.Tk):
 
 def setRootFullScreen(root: tk.Tk):
     root.attributes("-fullscreen", True)
-    root.bind("<Escape>", lambda e: endFullScreen(root))
+    # root.bind("<Escape>", lambda e: endFullScreen(root))
     g.isFullScreen = True
 
 def createEscapeRoot(title):
