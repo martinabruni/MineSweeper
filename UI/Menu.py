@@ -24,19 +24,19 @@ class Menu(CustomFrame):
    
 
     def __openSettings(self):
+        self.__buttonSettings=lib.changeImage(generic.clickSetting,self.__buttonSettings)
         generic.frameGlobal.destroy()
         generic.gameController.createMenuSettings()      
-        self.__buttonSettings=lib.changeImage(generic.clickSetting,self.__buttonSettings)
    
 
     def __openGame(self):
+        self.__buttonStart=lib.changeImage(generic.clickStart,self.__buttonStart)
         generic.frameGlobal.destroy()
         generic.gameController.createGame()      
-        self.__buttonStart=lib.changeImage(generic.clickStart,self.__buttonStart)
         
     def __quit(self):
-        generic.rootGlobal.destroy()
         self.__buttonQuit=lib.changeImage(generic.clickQuit,self.__buttonQuit)
+        generic.rootGlobal.destroy()
 
           
 
