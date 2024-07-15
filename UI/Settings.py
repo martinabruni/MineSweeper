@@ -35,6 +35,6 @@ class Settings(CustomFrame):
         generic.gameController.createMenu()
 
     def __setEasyLevel(self):
-        generic.boardSizeGlobal = 5
+        generic.boardSizeGlobal = 7
         generic.bombsPercentageGlobal = 20
         generic.gameController.createMenu()
