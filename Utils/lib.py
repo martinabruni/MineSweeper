@@ -2,7 +2,7 @@ import tkinter as tk
 import math
 
 import Utils.generic as g
-
+from PIL import Image, ImageTk
 
 def setWinCondition():
     g.winCondition = math.ceil(g.boardSizeGlobal ** 2 * (100 - g.bombsPercentageGlobal) / 100)
@@ -11,6 +11,7 @@ def setWinCondition():
 def setCoreGameUI():
     if g.isFullScreen == False:
         setRootPosition(g.rootGlobal)
+        return
     g.frameGlobal = tk.Frame(bg="black", bd=10, relief="groove")
     g.frameGlobal.place(relx=0.5, rely=0.5, anchor='center')
 
@@ -22,7 +23,35 @@ def createButton(frame, text, command, fg="white", bg="grey"):
                      bg=bg, fg=fg,
                      command=command)
 
-
+def pixelButton(frame,image,command,rely):
+    # Caricamento dell'immagine pixelata
+    pixel_image = Image.open(image)
+    pixel_image = pixel_image.resize((130, 60), Image.LANCZOS) 
+    photo = ImageTk.PhotoImage(pixel_image)
+    
+    # Creazione del bottone con immagine pixelata
+    button = tk.Button(
+        frame,
+        image=photo,
+        command=command,
+        borderwidth=0,
+        highlightthickness=0,
+        relief=tk.FLAT,        
+        activebackground="#000000",  
+        activeforeground="#000000"
+    )
+    button.image = photo 
+   
+    button.place(relx=0.5, rely=rely, anchor='center')  
+    return button
+    
+def changeImage(image,button):
+    new_image = Image.open(image)
+    new_image.resize((100, 60), Image.LANCZOS)  # Ridimensiona l'immagine
+    new_photo = ImageTk.PhotoImage(new_image)
+    button.config(image=new_photo)
+    button.image = new_photo  # Mantieni il riferimento all'immagine  
+    
 def setRootPosition(root: tk.Tk, width=1200, height=700):
     screenW = root.winfo_screenwidth()
     screenH = root.winfo_screenheight()
@@ -39,7 +68,7 @@ def endFullScreen(root: tk.Tk):
 
 def setRootFullScreen(root: tk.Tk):
     root.attributes("-fullscreen", True)
-    root.bind("<Escape>", lambda e: endFullScreen(root))
+    # root.bind("<Escape>", lambda e: endFullScreen(root))
     g.isFullScreen = True
 
 def createEscapeRoot(title):

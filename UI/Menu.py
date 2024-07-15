@@ -18,22 +18,27 @@ class Menu(CustomFrame):
 
     def initializeMenu(self):
         CustomFrame.initializeMenu(self)
-        self.__buttonSettings = lib.createButton(generic.frameGlobal, "Settings", self.__openSettings)
-        self.__buttonStart = lib.createButton(generic.frameGlobal, "Start", self.__openGame)
-        self.__buttonSettings.place(relx=0.5, rely=0.7, anchor='center')
-        self.__buttonStart.place(relx=0.5, rely=0.6, anchor='center')
-        self.__buttonQuit = lib.createButton(generic.frameGlobal, "Quit", generic.gameController.quitGame)
-        self.__buttonQuit.place(relx=0.5, rely=0.8, anchor='center')
+        self.__buttonStart=lib.pixelButton(generic.frameGlobal,generic.pixelStart,self.__openGame,0.58)
+        self.__buttonSettings = lib.pixelButton(generic.frameGlobal,generic.pixelSettings, self.__openSettings,0.70)
+        self.__buttonQuit = lib.pixelButton(generic.frameGlobal,generic.pixelQuit, self.__quit,0.81)
+   
 
     def __openSettings(self):
-        self.__buttonSettings.config(bg="white", fg="gray")
+        self.__buttonSettings=lib.changeImage(generic.clickSetting,self.__buttonSettings)
         generic.frameGlobal.destroy()
-        generic.gameController.createMenuSettings()
+        generic.gameController.createMenuSettings()      
+   
 
     def __openGame(self):
-        self.__buttonStart.config(bg="white", fg="gray")
+        self.__buttonStart=lib.changeImage(generic.clickStart,self.__buttonStart)
         generic.frameGlobal.destroy()
-        generic.gameController.createGame()
+        generic.gameController.createGame()      
+        
+    def __quit(self):
+        self.__buttonQuit=lib.changeImage(generic.clickQuit,self.__buttonQuit)
+        generic.rootGlobal.destroy()
+
+          
 
     # MOSECA
     def __startMusic(self):
