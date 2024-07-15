@@ -11,6 +11,7 @@ def setWinCondition():
 def setCoreGameUI():
     if g.isFullScreen == False:
         setRootPosition(g.rootGlobal)
+        return
     g.frameGlobal = tk.Frame(bg="black", bd=10, relief="groove")
     g.frameGlobal.place(relx=0.5, rely=0.5, anchor='center')
 
@@ -42,10 +43,11 @@ def pixelButton(frame,image,command,rely):
     button.image = photo 
    
     button.place(relx=0.5, rely=rely, anchor='center')  
+    return button
     
 def changeImage(image,button):
     new_image = Image.open(image)
-    new_image = new_image.resize((100, 60), Image.LANCZOS)  # Ridimensiona l'immagine
+    new_image.resize((100, 60), Image.LANCZOS)  # Ridimensiona l'immagine
     new_photo = ImageTk.PhotoImage(new_image)
     button.config(image=new_photo)
     button.image = new_photo  # Mantieni il riferimento all'immagine  
