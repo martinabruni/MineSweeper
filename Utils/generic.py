@@ -49,7 +49,6 @@ escapeRoot = None
 rootGlobal = tk.Tk()
 frameGlobal = tk.Frame(rootGlobal)
 frameTimer = None
-frameStats = None
 gameController = GameController()
 menuGlobal = None
 settingsGlobal = None

@@ -34,20 +34,27 @@ class GameController:
 
     def createTimer(self):
         g.frameTimer = tk.Frame(g.rootGlobal, bg="black")
-        g.frameTimer.pack(pady=10)
+        g.frameTimer.pack(pady=10, fill="x")
         g.timer = TimerApp(g.frameTimer)
         g.timer.reset_timer()
 
     def createStats(self):
-        g.frameStats = tk.Frame(g.rootGlobal, bg="black")
-        g.frameStats.pack(side="left", padx=1, pady=10)
         bombs = tk.StringVar()
         bombs.set(f"Bombe: {g.boardSizeGlobal**2 - g.winCondition} ")
-        bombslabel = tk.Label(g.frameStats, textvariable=bombs, font=("Terminal", 15), bg="black", fg="red")
-        bombslabel.grid(row=0, column=1, columnspan=1, padx=0,pady=0)
-        self.cells.set(f"    Celle da rivelare: {g.winCondition - g.revealedCellsGlobal} ")
-        cellslabel = tk.Label(g.frameStats, textvariable=self.cells, font=("Terminal", 15), bg="black", fg="red")
-        cellslabel.grid(row=1, column=1, columnspan=2, padx=0, pady=0)
+        posButtons = 0.15
+        bombslabel = tk.Label(g.frameTimer, textvariable=bombs, font=("Terminal", 15), bg="black", fg="red")
+        bombslabel.place(relx=0.10, rely=posButtons, anchor='center')
+        self.cells.set(f"Celle da rivelare: {g.winCondition - g.revealedCellsGlobal} ")
+        cellslabel = tk.Label(g.frameTimer, textvariable=self.cells, font=("Terminal", 15), bg="black", fg="red")
+        cellslabel.place(relx=0.10, rely=posButtons + 0.35, anchor='center')
+
+        button_close = tk.Button(g.frameTimer, text="Quit", command=g.gameController.quitGame, bg="red", fg="white")
+        button_close.place(relx=0.95, rely=posButtons, anchor='center')
+        button_continue = tk.Button(g.frameTimer, text="Restart", command=g.gameController.restartGame, bg="green", fg="white")
+        button_continue.place(relx=0.95, rely=posButtons+0.35, anchor='center')
+        button_exit = tk.Button(g.frameTimer, text="Menu", command=g.gameController.createMenu, bg="orange", fg="white")
+        button_exit.place(relx=0.95, rely=posButtons+0.7, anchor='center')
+
 
     def updateCellsLabel(self):
         self.cells.set(f"    Celle da rivelare: {g.winCondition - g.revealedCellsGlobal}")
@@ -81,8 +88,6 @@ class GameController:
         if g.frameGlobal:
             g.frameGlobal.destroy()
             g.frameGlobal = None
-        if g.frameStats:
-            g.frameStats.destroy()
             g.frameStats = None
         if g.escapeRoot:
             g.escapeRoot.destroy()
