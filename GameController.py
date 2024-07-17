@@ -48,11 +48,11 @@ class GameController:
         cellslabel = tk.Label(g.frameTimer, textvariable=self.cells, font=("Terminal", 15), bg="black", fg="red")
         cellslabel.place(relx=0.10, rely=posButtons + 0.35, anchor='center')
 
-        button_close = tk.Button(g.frameTimer, text="Quit", command=g.gameController.quitGame, bg="red", fg="white")
+        button_close = tk.Button(g.frameTimer, text="Quit", command=g.gameController.quitGame, bg="red", fg="white", width=g.buttonWidth)
         button_close.place(relx=0.95, rely=posButtons, anchor='center')
-        button_continue = tk.Button(g.frameTimer, text="Restart", command=g.gameController.restartGame, bg="green", fg="white")
+        button_continue = tk.Button(g.frameTimer, text="Restart", command=g.gameController.restartGame, bg="green", fg="white", width=g.buttonWidth)
         button_continue.place(relx=0.95, rely=posButtons+0.35, anchor='center')
-        button_exit = tk.Button(g.frameTimer, text="Menu", command=g.gameController.createMenu, bg="orange", fg="white")
+        button_exit = tk.Button(g.frameTimer, text="Menu", command=g.gameController.createMenu, bg="orange", fg="white", width=g.buttonWidth)
         button_exit.place(relx=0.95, rely=posButtons+0.7, anchor='center')
 
 
