@@ -9,7 +9,7 @@ class TimerApp:
         self.time_passed.set("00:00:00")
 
         self.label = tk.Label(self.frame, textvariable=self.time_passed, font=("Terminal", 30), bg="black", fg="red")
-        self.label.pack(pady=20)
+        self.label.pack(side="top", pady=20)
 
         self.elapsed_time = 0
         self.running = False

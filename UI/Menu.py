@@ -20,7 +20,7 @@ class Menu(CustomFrame):
         CustomFrame.initializeMenu(self)
         self.__buttonStart=lib.pixelButton(generic.frameGlobal,generic.pixelStart,self.__openGame,0.58)
         self.__buttonSettings = lib.pixelButton(generic.frameGlobal,generic.pixelSettings, self.__openSettings,0.70)
-        self.__buttonQuit = lib.pixelButton(generic.frameGlobal,generic.pixelQuit, self.__quit,0.81)
+        self.__buttonQuit = lib.pixelButton(generic.frameGlobal, generic.pixelQuit, self.__quit, 0.81)
    
 
     def __openSettings(self):
